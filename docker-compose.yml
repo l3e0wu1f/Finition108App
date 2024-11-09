@@ -4,9 +4,18 @@ services:
       context: ./backend
     ports:
       - "3000:3000"
+    volumes:
+      - ./backend:/app
 
   frontend:
     build:
       context: ./frontend
     ports:
       - "3001:3000"
+    volumes:
+      - ./frontend:/app
+
+  test:
+    build:
+      context: ./backend
+    command: npm test
