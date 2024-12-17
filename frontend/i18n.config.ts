@@ -6,7 +6,7 @@ export default defineI18nConfig(() => ({
             welcome: 'Welcome',
             aboutus: 'About us',
             home: 'Home',
-            contact: 'Contact', 
+            contact: 'Contact',
             portfolio: 'Portfolio',
             services: 'Services',
             process: 'Process',
@@ -14,12 +14,11 @@ export default defineI18nConfig(() => ({
         fr: {
             welcome: 'Bienvenue',
             aboutus: 'À propos',
-            home: 'Accueil', 
-            contact: 'Contact', 
-            portfolio: 'Portfolio', 
+            home: 'Accueil',
+            contact: 'Contact',
+            portfolio: 'Portfolio',
             services: 'Services',
             process: 'Processus',
         },
-    }
-  }))
-  
+    },
+}))

@@ -8,6 +8,8 @@ services:
       - ./backend:/app
 
   frontend:
+    environment:
+      - npm_config_platform=linux
     build:
       context: ./frontend
     ports:
@@ -15,7 +17,7 @@ services:
     volumes:
       - ./frontend:/app
 
-  test:
-    build:
-      context: ./backend
-    command: npm test
+  # test:
+  #   build:
+  #     context: ./backend
+  #   command: npm test

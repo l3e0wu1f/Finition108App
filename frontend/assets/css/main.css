@@ -1,8 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700&display=swap');
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
+/* @tailwind utilities; */
 
 html {
     font-size: 1rem;
     font-family: 'Poppins', sans-serif;
+    @apply text-primarybis
+}
+
+.primary-button {
+    @apply w-60 lg:w-80 h-16 flex justify-center items-center rounded-2xl lg:text-lg font-light bg-primarybis hover:bg-primarybis/80 text-secondary drop-shadow-lg
+}
+
+
+input[type=file]::file-selector-button {
+    margin-right: 8px;
+    border: none;
+    padding: 8px 12px;
+    color: #fff;
+    cursor: pointer;
+    @apply bg-primarybis rounded-md
+}
+
+input[type=file]::file-selector-button:hover {
+    @apply bg-opacity-80
+}
+
+.dark {
+    --color-primary-DEFAULT: rgb(33 20 18); /* Custom color in dark mode */
 }
