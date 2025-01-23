@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-[calc(100vh-13rem)]">
     <h1 class="font-raleway text-4xl sm:text-6xl  text-center mt-20 mb-12 md:mt-32 md:mb-20 pt-8 uppercase">
-      Process
+      {{ $t('process') }}
     </h1>
     <p
       class="md:text-lg font-light w-[90%] md:w-[70%] mx-auto text-center leading-relaxed z-50 pb-12"
@@ -115,5 +115,20 @@
 </template>
 
 <script setup>
+import { useHead } from '#imports'
 const { locale } = useI18n()
+
+const pageTitle = 'Notre Processus'
+const pageDescription = "Comprenez notre processus de rénovation centré sur le client qui garantit l'excellence et la satisfaction. De la consultation initiale aux dernières finitions, découvrez comment nous gérons votre projet avec précision et soin à chaque étape."
+
+useHead(() => ({
+  title: pageTitle,
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: pageDescription
+    }
+  ]
+}))
 </script>

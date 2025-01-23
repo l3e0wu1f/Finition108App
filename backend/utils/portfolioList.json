@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Cassegrain",
+        "filepath": "cassegrain",
+        "city": "Montréal, QC, Canada",
+        "date": "",
+        "credit_architect":"Atelier Schliess & Carter"
+    },
+    {
+        "name": "Strathyre",
+        "filepath": "strathyre",
+        "city": "Montréal, QC, Canada",
+        "date": "",
+        "credit":"Accordéon"
+    },
+    {
+        "name": "Henri-Julien",
+        "filepath": "henrijulien",
+        "city": "Montréal, QC, Canada",
+        "date": "",
+        "credit":"Catlin Stothers design"
+    },
+    {
+        "name": "Wolseley",
+        "filepath": "wolseley",
+        "city": "Montréal, QC, Canada",
+        "date": "12/12/12",
+        "credit_architect":"Atelier Schliess & Carter"
+    }
+]

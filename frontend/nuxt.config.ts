@@ -1,6 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    modules: ['@nuxtjs/i18n', '@nuxt/image', '@nuxt/eslint','@nuxt/ui'],
+    site: {
+        url: 'https://finition108.io',
+        name: 'Finition108',
+        description: "Bienvenue chez Finition 108, votre partenaire de choix pour des rénovations de qualité. Nous combinons savoir-faire technique et design créatif pour transformer chaque espace selon vos souhaits. Explorez nos services variés, jetez un œil à notre portfolio inspirant, et laissez-nous vous aider à réaliser l'espace de vos rêves.",
+    },
+    modules: ['@nuxtjs/i18n', '@nuxt/image', '@nuxt/eslint', '@nuxt/ui', '@nuxtjs/seo'],
     devtools: { enabled: true },
     css: ['~/assets/css/main.css'],
     compatibilityDate: '2024-04-03',

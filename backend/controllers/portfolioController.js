@@ -1,9 +1,11 @@
 const fs = require('fs');
 const path = require('path');
+const {LOCAL_PATH} = require('../env.js')
+
 
 // Path to the portfolio.json file
-const portfolioFilePath = '/Users/laurinevalat/Finition108App/backend/utils/portfolio.json';
-const uploadsPath = '/Users/laurinevalat/Finition108App/backend/public/uploads'
+const portfolioFilePath = LOCAL_PATH + '/utils/portfolioList.json';
+const uploadsPath = LOCAL_PATH + '/public/uploads'
 
 // Helper function to get the list of files in a directory
 const getFilesFromDirectory = (dirPath) => {

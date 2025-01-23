@@ -16,6 +16,7 @@
     "@nuxt/image": "1.2.0",
     "@nuxt/ui": "^2.19.2",
     "@nuxtjs/i18n": "^9.0.0-rc.2",
+    "@nuxtjs/seo": "^2.0.2",
     "nuxt": "^3.13.0",
     "nuxt-i18n": "^6.28.1",
     "rollup": "2.x",

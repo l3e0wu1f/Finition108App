@@ -47,16 +47,23 @@
     </div>
     <div class="w-full hover:md:bg-orange-950/10 py-8 md:py-20 lg:py-28">
       <div class="flex items-center justify-center gap-2 px-4">
-        <h2 class="text-lg md:text-2xl text-center uppercase">
+    
+        <h2 class="text-lg md:text-2xl text-center uppercase hidden md:block">
           {{ locale === 'fr' 
             ? "Construction résidentielle"
             : "Residential Construction"
           }}
         </h2>
         <button 
-          class="md:hidden text-lg flex items-center"
+          class="md:hidden text-lg flex items-center gap-2"
           @click="toggleParagraph('residential_construction')"
         >
+          <h2 class="text-lg md:text-2xl text-center uppercase">
+            {{ locale === 'fr' 
+              ? "Construction résidentielle"
+              : "Residential Construction"
+            }}
+          </h2>
           <UIcon v-if="!isParagraphVisible.residential_construction" name="lineicons:chevron-down" class="w-6 h-6" />
           <UIcon v-if="isParagraphVisible.residential_construction" name="lineicons:chevron-up" class="w-6 h-6" />
         </button>
@@ -78,16 +85,23 @@
     <div class="h-px w-full bg-orange-950/10 mx-auto lg:hidden" />
     <div class="w-full hover:md:bg-orange-950/10 py-8 md:py-20 lg:py-28">
       <div class="flex items-center justify-center gap-2 px-4">
-        <h2 class="text-lg md:text-2xl text-center uppercase">
+    
+        <h2 class="text-lg md:text-2xl text-center uppercase hidden md:block">
           {{ locale === 'fr' 
             ? "Construction commerciale"
             : "Commercial Construction"
           }}
         </h2>
         <button 
-          class="md:hidden text-lg flex items-center"
+          class="md:hidden text-lg flex items-center gap-2"
           @click="toggleParagraph('commercial_construction')"
         >
+          <h2 class="text-lg md:text-2xl text-center uppercase">
+            {{ locale === 'fr' 
+              ? "Construction commerciale"
+              : "Commercial Construction"
+            }}
+          </h2>
           <UIcon v-if="!isParagraphVisible.commercial_construction" name="lineicons:chevron-down" class="w-6 h-6" />
           <UIcon v-if="isParagraphVisible.commercial_construction" name="lineicons:chevron-up" class="w-6 h-6" />
         </button>
@@ -102,16 +116,23 @@
     <div class="h-px w-full bg-orange-950/10 mx-auto lg:hidden" />
     <div class="w-full hover:md:bg-orange-950/10 py-8 md:py-20 lg:py-28">
       <div class="flex items-center justify-center gap-2 px-4">
-        <h2 class="text-lg md:text-2xl text-center uppercase">
+    
+        <h2 class="text-lg md:text-2xl text-center uppercase hidden md:block">
           {{ locale === 'fr' 
             ? "Services de toiture"
             : "Roofing Services"
           }}
         </h2>
         <button 
-          class="md:hidden text-lg flex items-center"
+          class="md:hidden text-lg flex items-center gap-2"
           @click="toggleParagraph('roofing_services')"
         >
+          <h2 class="text-lg md:text-2xl text-center uppercase">
+            {{ locale === 'fr' 
+              ? "Services de toiture"
+              : "Roofing Services"
+            }}
+          </h2>
           <UIcon v-if="!isParagraphVisible.roofing_services" name="lineicons:chevron-down" class="w-6 h-6" />
           <UIcon v-if="isParagraphVisible.roofing_services" name="lineicons:chevron-up" class="w-6 h-6" />
         </button>
@@ -125,16 +146,23 @@
     <div class="h-px w-full bg-orange-950/10 mx-auto lg:hidden" />
     <div class="w-full hover:md:bg-orange-950/10 py-8 md:py-20 lg:py-28">
       <div class="flex items-center justify-center gap-2 px-4">
-        <h2 class="text-lg md:text-2xl text-center uppercase">
+    
+        <h2 class="text-lg md:text-2xl text-center uppercase hidden md:block">
           {{ locale === 'fr' 
             ? "Installation de revêtements de sol"
             : "Flooring Installation"
           }}
         </h2>
         <button 
-          class="md:hidden text-lg flex items-center"
+          class="md:hidden text-lg flex items-center gap-2"
           @click="toggleParagraph('flooring_installation')"
         >
+          <h2 class="text-lg md:text-2xl text-center uppercase">
+            {{ locale === 'fr' 
+              ? "Installation de revêtements de sol"
+              : "Flooring Installation"
+            }}
+          </h2>
           <UIcon v-if="!isParagraphVisible.flooring_installation" name="lineicons:chevron-down" class="w-6 h-6" />
           <UIcon v-if="isParagraphVisible.flooring_installation" name="lineicons:chevron-up" class="w-6 h-6" />
         </button>
@@ -149,16 +177,23 @@
     <div class="h-px w-full bg-orange-950/10 mx-auto lg:hidden" />
     <div class="w-full hover:md:bg-orange-950/10 py-8 md:py-20 lg:py-28">
       <div class="flex items-center justify-center gap-2 px-4">
-        <h2 class="text-lg md:text-2xl text-center uppercase">
+    
+        <h2 class="text-lg md:text-2xl text-center uppercase hidden md:block">
           {{ locale === 'fr' 
             ? "Terrasses et espaces extérieurs"
             : "Deck and Outdoor Living Spaces"
           }}
         </h2>
         <button 
-          class="md:hidden text-lg flex items-center"
+          class="md:hidden text-lg flex items-center gap-2"
           @click="toggleParagraph('deck_and_outdoor')"
         >
+          <h2 class="text-lg md:text-2xl text-center uppercase">
+            {{ locale === 'fr' 
+              ? "Terrasses et espaces extérieurs"
+              : "Deck and Outdoor Living Spaces"
+            }}
+          </h2>
           <UIcon v-if="!isParagraphVisible.deck_and_outdoor" name="lineicons:chevron-down" class="w-6 h-6" />
           <UIcon v-if="isParagraphVisible.deck_and_outdoor" name="lineicons:chevron-up" class="w-6 h-6" />
         </button>
@@ -173,16 +208,23 @@
     <div class="h-px w-full bg-orange-950/10 mx-auto lg:hidden" />
     <div class="w-full hover:md:bg-orange-950/10 py-8 md:py-20 lg:py-28">
       <div class="flex items-center justify-center gap-2 px-4">
-        <h2 class="text-lg md:text-2xl text-center uppercase">
+    
+        <h2 class="text-lg md:text-2xl text-center uppercase hidden md:block">
           {{ locale === 'fr' 
             ? "Structure et ossature"
             : "Framing and Structure"
           }}
         </h2>
         <button 
-          class="md:hidden text-lg flex items-center"
+          class="md:hidden text-lg flex items-center gap-2"
           @click="toggleParagraph('framing_and_structure')"
         >
+          <h2 class="text-lg md:text-2xl text-center uppercase">
+            {{ locale === 'fr' 
+              ? "Structure et ossature"
+              : "Framing and Structure"
+            }}
+          </h2>
           <UIcon v-if="!isParagraphVisible.framing_and_structure" name="lineicons:chevron-down" class="w-6 h-6" />
           <UIcon v-if="isParagraphVisible.framing_and_structure" name="lineicons:chevron-up" class="w-6 h-6" />
         </button>
@@ -197,16 +239,23 @@
     <div class="h-px w-full bg-orange-950/10 mx-auto lg:hidden" />
     <div class="w-full hover:md:bg-orange-950/10 py-8 md:py-20 lg:py-28">
       <div class="flex items-center justify-center gap-2 px-4">
-        <h2 class="text-lg md:text-2xl text-center uppercase">
+    
+        <h2 class="text-lg md:text-2xl text-center uppercase hidden md:block">
           {{ locale === 'fr' 
             ? "Services électriques, de plomberie et de CVC (HVAC)"
             : "Electrical, Plumbing and HVAC Services"
           }}
         </h2>
         <button 
-          class="md:hidden text-lg flex items-center"
+          class="md:hidden text-lg flex items-center gap-2"
           @click="toggleParagraph('electrical_and_plumbing')"
         >
+          <h2 class="text-lg md:text-2xl text-center uppercase">
+            {{ locale === 'fr' 
+              ? "Services électriques, de plomberie et de CVC (HVAC)"
+              : "Electrical, Plumbing and HVAC Services"
+            }}
+          </h2>
           <UIcon v-if="!isParagraphVisible.electrical_and_plumbing" name="lineicons:chevron-down" class="w-6 h-6" />
           <UIcon v-if="isParagraphVisible.electrical_and_plumbing" name="lineicons:chevron-up" class="w-6 h-6" />
         </button>
@@ -221,16 +270,23 @@
     <div class="h-px w-full bg-orange-950/10 mx-auto lg:hidden" />
     <div class="w-full hover:md:bg-orange-950/10 py-8 md:py-20 lg:py-28">
       <div class="flex items-center justify-center gap-2 px-4">
-        <h2 class="text-lg md:text-2xl text-center uppercase">
+    
+        <h2 class="text-lg md:text-2xl text-center uppercase hidden md:block">
           {{ locale === 'fr' 
             ? "Fenêtres et portes"
             : "Windows and Doors"
           }}
         </h2>
         <button 
-          class="md:hidden text-lg flex items-center"
+          class="md:hidden text-lg flex items-center gap-2"
           @click="toggleParagraph('windows_doors')"
         >
+          <h2 class="text-lg md:text-2xl text-center uppercase">
+            {{ locale === 'fr' 
+              ? "Fenêtres et portes"
+              : "Windows and Doors"
+            }}
+          </h2>
           <UIcon v-if="!isParagraphVisible.windows_doors" name="lineicons:chevron-down" class="w-6 h-6" />
           <UIcon v-if="isParagraphVisible.windows_doors" name="lineicons:chevron-up" class="w-6 h-6" />
         </button>
@@ -245,16 +301,23 @@
     <div class="h-px w-full bg-orange-950/10 mx-auto lg:hidden" />
     <div class="w-full hover:md:bg-orange-950/10 py-8 md:py-20 lg:py-28">
       <div class="flex items-center justify-center gap-2 px-4">
-        <h2 class="text-lg md:text-2xl text-center uppercase">
+    
+        <h2 class="text-lg md:text-2xl text-center uppercase hidden md:block">
           {{ locale === 'fr' 
             ? "Finitions intérieures"
             : "Interior Finishes"
           }}
         </h2>
         <button 
-          class="md:hidden text-lg flex items-center"
+          class="md:hidden text-lg flex items-center gap-2"
           @click="toggleParagraph('interior_finishes')"
         >
+          <h2 class="text-lg md:text-2xl text-center uppercase">
+            {{ locale === 'fr' 
+              ? "Finitions intérieures"
+              : "Interior Finishes"
+            }}
+          </h2>
           <UIcon v-if="!isParagraphVisible.interior_finishes" name="lineicons:chevron-down" class="w-6 h-6" />
           <UIcon v-if="isParagraphVisible.interior_finishes" name="lineicons:chevron-up" class="w-6 h-6" />
         </button>
@@ -269,16 +332,22 @@
     <div class="h-px w-full bg-orange-950/10 mx-auto lg:hidden" />
     <div class="w-full hover:md:bg-orange-950/10 py-8 md:py-20 lg:py-28">
       <div class="flex items-center justify-center gap-2 px-4">
-        <h2 class="text-lg md:text-2xl text-center uppercase">
+        <h2 class="text-lg md:text-2xl text-center uppercase hidden md:block">
           {{ locale === 'fr' 
             ? "Solutions de construction durable"
             : "Sustainable Building Solutions"
           }}
         </h2>
         <button 
-          class="md:hidden text-lg flex items-center"
+          class="md:hidden text-lg flex items-center gap-2"
           @click="toggleParagraph('sustainable_building_solutions')"
         >
+          <h2 class="text-lg md:text-2xl text-center uppercase">
+            {{ locale === 'fr' 
+              ? "Solutions de construction durable"
+              : "Sustainable Building Solutions"
+            }}
+          </h2>
           <UIcon v-if="!isParagraphVisible.sustainable_building_solutions" name="lineicons:chevron-down" class="w-6 h-6" />
           <UIcon v-if="isParagraphVisible.sustainable_building_solutions" name="lineicons:chevron-up" class="w-6 h-6" />
         </button>
@@ -293,16 +362,23 @@
     <div class="h-px w-full bg-orange-950/10 mx-auto lg:hidden" />
     <div class="w-full hover:md:bg-orange-950/10 py-8 md:py-20 lg:py-28">
       <div class="flex items-center justify-center gap-2 px-4">
-        <h2 class="text-lg md:text-2xl text-center uppercase">
+    
+        <h2 class="text-lg md:text-2xl text-center uppercase hidden md:block">
           {{ locale === 'fr' 
             ? "Gestion de projet"
             : "Project Management"
           }}
         </h2>
         <button 
-          class="md:hidden text-lg flex items-center"
+          class="md:hidden text-lg flex items-center gap-2"
           @click="toggleParagraph('project_management')"
         >
+          <h2 class="text-lg md:text-2xl text-center uppercase">
+            {{ locale === 'fr' 
+              ? "Gestion de projet"
+              : "Project Management"
+            }}
+          </h2>
           <UIcon v-if="!isParagraphVisible.project_management" name="lineicons:chevron-down" class="w-6 h-6" />
           <UIcon v-if="isParagraphVisible.project_management" name="lineicons:chevron-up" class="w-6 h-6" />
         </button>
@@ -334,7 +410,7 @@
 </template>
 
 <script setup>
-import { useLocalePath } from '#imports'
+import { useLocalePath , useHead } from '#imports'
 
 const localePath = useLocalePath()
 const { locale } = useI18n()
@@ -358,5 +434,19 @@ const isParagraphVisible = ref({
 const toggleParagraph = (section) => {
     isParagraphVisible.value[section] = !isParagraphVisible.value[section]
 }
+
+const pageTitle = 'Nos Services'
+const pageDescription = "Chez Finition108, nous offrons une gamme complète de services de rénovation incluant la rénovation de cuisines, la modernisation de salles de bain, et la rénovation complète de maisons. Découvrez comment notre équipe d'experts peut répondre à tous vos besoins en matière de rénovation."
+
+useHead(() => ({
+    title: pageTitle,
+    meta: [
+        {
+            hid: 'description',
+            name: 'description',
+            content: pageDescription
+        }
+    ]
+}))
 
 </script>

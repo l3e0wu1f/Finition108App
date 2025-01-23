@@ -86,7 +86,7 @@ exports.submitContactForm = async (req, res) => {
     } else {
         message ={
             from: EMAIL,
-            to : EMAIL,
+            to : 'admin@finition108.io',
             subject: `New potential client : ${name}`,
             html: output,
         }  

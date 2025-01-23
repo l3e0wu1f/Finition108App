@@ -1,14 +1,29 @@
 <template>
     <div class="min-h-[calc(100vh-13rem)]">
-        <h1 class="font-raleway text-3xl md:text-5xl  text-center my-20 pt-8 uppercase">
+        <h1 class="font-raleway text-3xl md:text-5xl  text-center my-4 md:my-6 pt-20 uppercase">
             {{ id }}
         </h1>
-        <p class="w-[70%] mx-auto text-center pb-10">
-            {{ locale == 'fr'
-              ? "Vous avez un projet commercial ou résidentiel à réaliser ? Vous souhaitez découvrir les services proposés par Finition.108 ? Nous serions heureux d'échanger avec vous et de vous accompagner dans la concrétisation de vos idées."
-              : "Do you have a commercial or residential project you'd like to discuss? Want to learn more about the services offered by Finition.108? We would be happy to connect with you and help bring your ideas to life."
-            }}
-        </p>
+        <div v-if="portfolio" class="flex flex-col md:flex-row justify-center gap-4 md:gap-2 pb-10">
+            <div class="">
+                <h3 v-if="portfolio?.credit" class="text-xl font-light text-center">
+                    {{ locale === 'fr' ? 'Crédit' : 'Credit' }} : {{ portfolio.credit }} 
+                </h3>
+                <h3 v-if="portfolio?.credit_architect" class="text-xl font-light text-center">
+                    {{ locale === 'fr' ? 'Crédit Architecte' : 'Credit Architect' }} : {{ portfolio.credit_architect }}
+                </h3>
+            </div>
+            <span class="hidden md:block">●</span>
+            <div class="">
+                <h3 v-if="portfolio?.city" class="text-xl font-light text-center">
+                    {{ locale === 'fr' ? 'Lieu' : 'Location' }} : {{ portfolio.city }}
+                </h3>
+            </div>
+
+        </div>
+        <div v-if="!images" class="flex w-full items-center justify-center h-[calc(100vh*0.7)]">
+            <UIcon name="line-md:loading-twotone-loop" class="w-16 h-16 text-primarybis" />
+        </div>
+
         <div v-if="images" class="w-screen flex items-center justify-center my-4 md:my-10">
             <UCarousel 
                 v-slot="{ item }" 
@@ -24,6 +39,8 @@
 </template>
 
 <script setup>
+import { useHead } from '#imports'
+
 const route = useRoute()
 const { locale } = useI18n()
 const portfolio = ref(null)
@@ -39,11 +56,24 @@ onMounted(async () => {
         const data = await response.json()
         portfolio.value = data.portfolio
         images.value = data.images.map(image => "http://localhost:3001" + image);
-        console.log(images.value)
     }
     catch (error) {
         console.error('Error fetching portfolios:', error)
     }
 })
+
+const pageTitle = 'Projet ' + route.params.id
+const pageDescription = "Parcourez notre portfolio pour voir des exemples de notre savoir-faire et des divers projets que nous avons réalisés. Laissez-vous inspirer par les transformations que nous avons accompli dans des maisons et des entreprises."
+
+useHead(() => ({
+    title: pageTitle,
+    meta: [
+        {
+            hid: 'description',
+            name: 'description',
+            content: pageDescription
+        }
+    ]
+}))
 
 </script>

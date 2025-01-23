@@ -128,7 +128,7 @@
                 <label
                   ref="dropContainer"
                   for="deposit_file"
-                  class="hidden md:flex flex-col justify-end items-center gap-2.5 sm:h-52 p-5 border border-dashed border-primarybis/30 hover:bg-orange-950/10 font-light overflow-hidden"
+                  class="flex flex-col justify-center items-center gap-2.5 sm:h-52 p-5 border border-dashed border-primarybis/30 hover:bg-orange-950/10 font-light overflow-hidden"
                   @dragover.prevent
                   @dragenter="onDragEnter"
                   @dragleave="onDragLeave"
@@ -141,21 +141,12 @@
                     ref="fileInput"
                     type="file"
                     name="deposit_file"
+                    class="text-sm md:text-base"
                     accept="image/*,application/pdf"
                     multiple
                   >
                 </label>
-                <input
-                  id="deposit_file"
-                  ref="fileInput"
-                  type="file"
-                  name="deposit_file"
-                  accept="image/*,application/pdf"
-                  class="md:hidden block"
-                  multiple
-                  >
               </div>
-
               <div class="flex flex-col gap-3 w-full sm:w-1/2 max-sm:h-52">
                 <label for="description">Description *</label>
                 <textarea
@@ -174,6 +165,12 @@
             >
               {{ locale == 'fr' ? "Envoyer" : "Send" }}
             </button>
+            <p v-if="messageSent" class="text-green-600 font-thin md:text-lg self-end min-w-60 md:min-w-80 text-center">
+              {{ locale === 'fr'
+              ? "Votre message a bien été envoyé !"
+              : "Your message has been sent!"
+              }}
+            </p>
           </form>
         </div>
       </div>
@@ -183,6 +180,7 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
+import { useHead } from '#imports'
 
 const { locale } = useI18n()
 
@@ -190,6 +188,7 @@ const dropContainer = ref(null)
 const fileInput = ref(null)
 
 const contactForm = ref(null) // Reference to the form
+const messageSent = ref(false)
 
 async function sendData() {
     // Associate the FormData object with the form element
@@ -201,7 +200,10 @@ async function sendData() {
             // Set the FormData instance as the request body
             body: formData,
         })
-        console.log(await response.json())
+        if (response.status === 201) {
+            contactForm.value.reset()
+            messageSent.value  = true
+        }
     }
     catch (e) {
         console.error(e)
@@ -259,4 +261,18 @@ onMounted(() => {
         fileInput.value.files = dataTransfer.files
     })
 })
+
+const pageTitle = 'Contactez-Nous'
+const pageDescription = "Prêt à commencer votre rénovation ? Contactez Finition108 dès aujourd'hui pour planifier une consultation ou pour nous poser vos questions sur nos services et notre processus. Nous sommes ici pour vous aider à réaliser vos objectifs de rénovation."
+
+useHead(() => ({
+    title: pageTitle,
+    meta: [
+        {
+            hid: 'description',
+            name: 'description',
+            content: pageDescription
+        }
+    ]
+}))
 </script>

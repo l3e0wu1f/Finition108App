@@ -13,6 +13,7 @@ app.use(express.json());  // Pour parser le JSON
 // Serve images from the 'uploads' folder
 app.use('/uploads', express.static(path.join(__dirname, 'public', 'uploads')));
 
+
 app.get('/api', (req, res) => {
   console.log("Hello")
   res.json({ message: 'Hello from the back end!' });
@@ -21,6 +22,7 @@ app.get('/api', (req, res) => {
 
 app.use('/api', portfolioRoutes); 
 app.use('/api', contactFormRoutes); 
+
 
 
 app.listen(PORT, () => {
