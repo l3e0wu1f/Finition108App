@@ -11,7 +11,6 @@ function isValidEmail(email) {
   }
 
 exports.submitContactForm = async (req, res) => {
-    console.log('localhost:3000/contact-form')
     const { name, email, phone, job_needed, budget, deposit_file, description } = req.body;
 
     if (!isValidEmail(email)) {
@@ -78,7 +77,7 @@ exports.submitContactForm = async (req, res) => {
         }
         message ={
             from: EMAIL,
-            to : EMAIL,
+            to : 'admin@finition108.io',
             subject: `New potential client : ${name}`,
             html: output,
             attachments: attachments,
