@@ -1,5 +1,5 @@
 # Dockerfile for back end
-FROM node:20
+FROM node:16
 
 WORKDIR /app
 COPY package*.json ./
