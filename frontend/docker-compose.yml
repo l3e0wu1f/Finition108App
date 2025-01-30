@@ -1,16 +1,16 @@
 
-services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/app
-    environment:
-      - NODE_ENV=production
-    restart: always
+# services:
+#  app:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    ports:
+#      - "3000:3000"
+#    volumes:
+#      - .:/app
+#    environment:
+#      - NODE_ENV=production
+#    restart: always
 
 
 
