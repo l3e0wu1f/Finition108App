@@ -1,4 +1,29 @@
+# Production
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - NODE_ENV=production
+    restart: always
 
+  frontend:
+    build:
+      context: ./frontend
+    environment:
+      - NODE_ENV=production
+      - npm_config_platform=linux
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    restart: always
+
+    
 # services:
 #   app:
 #     build:
@@ -15,24 +40,24 @@
 
 
 
-services:
-  backend:
-    build:
-      context: ./backend
-    ports:
-      - "3001:3000"
-    volumes:
-      - ./backend:/app
+#services:
+# backend:
+#  build:
+#    context: ./backend
+#   ports:
+#     - "3001:3000"
+#   volumes:
+#     - ./backend:/app
 
-  frontend:
-    environment:
-      - npm_config_platform=linux
-    build:
-      context: ./frontend
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./frontend:/app
+# frontend:
+#   environment:
+#     - npm_config_platform=linux
+#   build:
+#     context: ./frontend
+#   ports:
+#     - "3000:3000"
+#   volumes:
+#     - ./frontend:/app
 
   # test:
   #   build:
