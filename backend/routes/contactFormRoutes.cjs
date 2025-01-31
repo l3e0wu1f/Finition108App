@@ -25,5 +25,3 @@ const upload = multer({
 router.post('/contact-form', upload.array('deposit_file'), submitContactForm);
 
 module.exports = router;
-// Ensure default export
-export default router;
