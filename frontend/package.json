@@ -22,7 +22,6 @@
     "nuxt": "^3.13.0",
     "@nuxt/kit": "latest",
     "@nuxt/bridge": "latest",
-    "nuxt-i18n": "^6.28.1",
     "rollup": "2.x",
     "sharp": "^0.33.5",
     "vue": "latest",
