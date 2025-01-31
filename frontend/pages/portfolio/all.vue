@@ -50,17 +50,31 @@ const { locale } = useI18n()
 
 const portfolios = ref(null)
 
-
 onMounted(async () => {
     try {
         const response = await fetch('http://localhost:3001/api/portfolio/all') // Adjust the endpoint as needed
         const data = await response.json()
-        portfolios.value = data.portfolios
+
+        // Update the image URLs to use the CDN URL
+        portfolios.value = data.portfolios.map(portfolio => {
+            portfolio.imageUrl = `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${portfolio.imageName}`;
+            return portfolio;
+        });
     }
     catch (error) {
         console.error('Error fetching portfolios:', error)
     }
 })
+// onMounted(async () => {
+//     try {
+//         const response = await fetch('http://localhost:3001/api/portfolio/all') // Adjust the endpoint as needed
+//         const data = await response.json()
+//         portfolios.value = data.portfolios
+//     }
+//     catch (error) {
+//         console.error('Error fetching portfolios:', error)
+//     }
+// })
 
 const pageTitle = 'Notre Portfolio'
 const pageDescription = "Parcourez notre portfolio pour voir des exemples de notre savoir-faire et des divers projets que nous avons réalisés. Laissez-vous inspirer par les transformations que nous avons accompli dans des maisons et des entreprises."
