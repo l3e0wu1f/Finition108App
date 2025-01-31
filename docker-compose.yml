@@ -4,7 +4,7 @@ services:
     build:
       context: ./backend
     ports:
-      - "4000:4000"
+      - "3001:3001"
     volumes:
       - ./backend:/app
       - /app/node_modules  # Exclude local node_modules
