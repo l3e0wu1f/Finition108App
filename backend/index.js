@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3001;
 const portfolioRoutes = require('./routes/portfolioRoutes');
 const contactFormRoutes = require('./routes/contactFormRoutes');
 // import individual service
-const AWS = require('aws-sdk/clients/s3');
+const S3 = require('aws-sdk/clients/s3');
 
 app.use(cors());
 
