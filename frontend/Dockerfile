@@ -13,6 +13,7 @@ RUN rm -rf node_modules package-lock.json
 RUN npm install -g npm@6
 RUN npm install
 RUN npm install -g nuxt @nuxt/kit @nuxt/bridge
+RUN npm i -D @iconify-json/lineicons
 COPY . .
 
 EXPOSE 3000
