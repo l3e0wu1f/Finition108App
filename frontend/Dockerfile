@@ -22,13 +22,14 @@ RUN rm -rf node_modules package-lock.json
 
 # Install npm and dependencies
 RUN npm install -g npm@6
-RUN npm install
 
 # Install necessary global Nuxt modules
 RUN npm install -g nuxt @nuxt/kit @nuxt/bridge
 
 # Install @nuxtjs/i18n and typescript
 RUN npm install @nuxtjs/i18n typescript --save
+
+RUN npm install
 
 # Install other necessary dev dependencies
 RUN npm i -D @iconify-json/lineicons
