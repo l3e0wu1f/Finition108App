@@ -18,7 +18,7 @@ app.use(express.json());  // Pour parser le JSON
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: 'tor-1'
+  region: 'tor1'
 });
 
 // Serve images from S3, including sub-directories
