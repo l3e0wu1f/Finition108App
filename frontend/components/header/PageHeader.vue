@@ -6,7 +6,7 @@
     >
       <img
         class="h-20"
-        src="/img/logo.png"
+        src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/logo.png"
       >
       <p class="text-xl font-light md:hidden lg:block">
         Finition108
@@ -90,7 +90,7 @@
         >
           <img
             class="h-20"
-            src="/img/logo.png"
+            src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/logo.png"
           >
           <p class="text-xl font-light md:hidden lg:block">
             Finition108
