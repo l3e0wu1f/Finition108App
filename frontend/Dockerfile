@@ -25,7 +25,7 @@ RUN npm install -g npm@6
 RUN npm install
 
 # Install necessary global Nuxt modules
-RUN npm install -g nuxt @nuxt/kit @nuxt/bridge
+RUN npm install -g nuxt @nuxt/kit @nuxt/bridge typescript
 
 # Install other necessary dev dependencies
 # RUN npm i -D @iconify-json/lineicons
