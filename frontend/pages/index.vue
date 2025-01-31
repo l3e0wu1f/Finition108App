@@ -4,7 +4,7 @@
     <div class="h-[calc(100vh-5rem)] w-screen overflow-hidden z-0 relative">
       <div
         class="bg-fixed bg-cover bg-center h-full w-full absolute"
-        style="background-image: url('img/backdrop.jpg');"
+        style="background-image: url('https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/backdrop.jpg');"
       />
       <div class="flex flex-col justify-center p-4 lg:p-14 z-5 absolute lg:h-[25rem] bottom-0 right-0">
         <h1
@@ -31,7 +31,7 @@
     <div class="bg-secondary z-10">
       <div class="lg:h-[calc(100vw/2.5)] flex flex-col lg:flex-row items-center relative overflow-hidden justify-between">
         <NuxtImg
-          src="/img/home_woman.jpg"
+          src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/home_woman.jpg"
           class="h-screen max-w-none lg:w-screen absolute opacity-20"
           fit="outside"
           loading="lazy"
@@ -39,7 +39,7 @@
 
         <div class="lg:h-[calc((100vw/2.5)-8rem)] w-1/2 overflow-hidden hidden lg:block z-10">
           <NuxtImg
-            src="/img/home_woman.jpg"
+            src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/home_woman.jpg"
             class="lg:h-[calc((100vw/2.5)-8rem)] max-w-none hidden lg:block ml-16"
             fit="outside"
             loading="lazy"
@@ -47,7 +47,7 @@
         </div>
         <div class="w-full p-10 overflow-hidden z-10 lg:hidden block">
           <NuxtImg
-            src="/img/home_woman.jpg"
+            src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/home_woman.jpg"
             class="lg:hidden block"
             fit="outside"
             loading="lazy"
@@ -71,14 +71,14 @@
       </div>
       <div class="lg:h-[calc(100vw/2.5)] flex flex-col lg:flex-row items-center relative overflow-hidden justify-between">
         <NuxtImg
-          src="/img/inside_other_house.jpg"
+          src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/inside_other_house.jpg"
           class="h-screen max-w-none lg:w-screen absolute  opacity-20"
           fit="outside"
           loading="lazy"
         />
         <div class="w-full p-10 overflow-hidden z-10 lg:hidden block">
           <NuxtImg
-            src="/img/inside_other_house.jpg"
+            src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/inside_other_house.jpg"
             class="lg:hidden block"
             fit="outside"
             loading="lazy"
@@ -102,7 +102,7 @@
 
         <div class="lg:h-[calc((100vw/2.5)-8rem)] w-1/2 overflow-hidden hidden lg:block z-10 mr-16">
           <NuxtImg
-            src="/img/inside_other_house.jpg"
+            src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/inside_other_house.jpg"
             class="h-[calc((100vw/2.5)-8rem)] max-w-none"
             fit="outside"
             loading="lazy"
@@ -111,7 +111,7 @@
       </div>
       <div class="lg:h-[calc(100vw/2.5)] flex flex-col lg:flex-row items-center relative overflow-hidden justify-between">
         <NuxtImg
-          src="/img/front_house.jpg"
+          src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/front_house.jpg"
           class="h-screen max-w-none lg:w-screen absolute opacity-20"
           fit="outside"
           loading="lazy"
@@ -119,7 +119,7 @@
 
         <div class="lg:h-[calc((100vw/2.5)-8rem)] w-1/2 overflow-hidden hidden lg:block z-10 ml-16">
           <NuxtImg
-            src="/img/front_house.jpg"
+            src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/front_house.jpg"
             class="h-[calc((100vw/2.5)-8rem)] max-w-none"
             fit="outside"
             loading="lazy"
@@ -127,7 +127,7 @@
         </div>
         <div class=" w-full p-10 overflow-hidden z-10 lg:hidden block">
           <NuxtImg
-            src="/img/front_house.jpg"
+            src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/front_house.jpg"
             class="lg:hidden block"
             fit="outside"
             loading="lazy"
