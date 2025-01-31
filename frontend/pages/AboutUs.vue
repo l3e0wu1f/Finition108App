@@ -2,7 +2,7 @@
   <div class="min-h-[calc(100vh-13rem)]">
     <div
       class="bg-fixed bg-center bg-cover h-full pt-10 md:pt-28 relative pb-10 md:pb-16"
-      style="background-image: url('/img/side_scaffolding.jpg');"
+      style="background-image: url('https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/side_scaffolding.jpg');"
     >
       <div class="z-10">
         <h1 
@@ -38,7 +38,7 @@
   
   
       <NuxtImg
-        src="/img/front_renov.jpg"
+        src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/front_renov.jpg"
         class="w-full md:w-[50%] aspect-video"
       />
       
@@ -52,7 +52,7 @@
       </div>
 
       <NuxtImg
-        src="/img/20230908_101911.jpg"
+        src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/20230908_101911.jpg"
         class="w-full md:w-[50%]"
       />
       <div class="flex flex-col md:flex-row md:w-[70%]">
