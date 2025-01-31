@@ -41,6 +41,7 @@ const uploadImage = async (file) => {
   } catch (error) {
     console.error("Error uploading object:", error);
   }
+};
 
 
 app.get('/api', (req, res) => {
