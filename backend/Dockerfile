@@ -9,6 +9,9 @@ ENV AWS_SECRET_ACCESS_KEY=cTm4w/ahaYGQmqv65x7fVsKBY/DWnIOMT7zvuCRwBvE
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
+# Update npm
+RUN npm install -g npm@latest
+
 # Install dependencies
 RUN npm install
 
