@@ -8,8 +8,10 @@ import cors from 'cors'
 // const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3001;
-const portfolioRoutes = require('./routes/portfolioRoutes');
-const contactFormRoutes = require('./routes/contactFormRoutes');
+// const portfolioRoutes = require('./routes/portfolioRoutes');
+// const contactFormRoutes = require('./routes/contactFormRoutes');
+import portfolioRoutes from './routes/portfolioRoutes.js';  
+import contactFormRoutes from './routes/contactFormRoutes.js';  
 
 app.use(cors());
 
