@@ -2,7 +2,7 @@
   <div class="w-screen min-h-screen">
     <div
       class="bg-fixed bg-center bg-cover h-full pt-10 md:pt-28 relative"
-      style="background-image: url('/img/paint_brush.jpg');"
+      style="background-image: url('https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/paint_brush.jpg');"
     >
       <div class="z-10">
         <h1 
