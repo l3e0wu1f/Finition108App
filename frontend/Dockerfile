@@ -2,8 +2,9 @@
 FROM node:18
 
 ENV npm_config_platform=linux
-ENV NODE_ENV=production  # Set NODE_ENV to production
-ENV VITE_S3_URL=https://imagery.tor1.cdn.digitaloceanspaces.com/frontend
+ENV NODE_ENV=production
+ENV AWS_ACCESS_KEY_ID=DO003NB89L7TREA74BHW
+ENV AWS_SECRET_ACCESS_KEY=cTm4w/ahaYGQmqv65x7fVsKBY/DWnIOMT7zvuCRwBvE
 
 WORKDIR /app
 COPY package*.json ./
