@@ -3,6 +3,8 @@ FROM node:18
 
 ENV npm_config_platform=linux
 ENV NODE_ENV=production  # Set NODE_ENV to production
+ENV VITE_S3_URL=https://imagery.tor1.cdn.digitaloceanspaces.com/frontend
+
 WORKDIR /app
 COPY package*.json ./
 RUN npm cache clean --force
