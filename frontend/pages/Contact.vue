@@ -3,7 +3,7 @@
   <div class="min-h-[calc(100vh-13rem)] flex flex-col">
     <div
       class="flex flex-col xl:flex-row justify-between bg-fixed bg-cover h-full relative"
-      style="background-image: url('/img/signing.jpg');"
+      style="background-image: url('https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/signing.jpg');"
     >
       <div class="z-10 xl:w-2/5">
         <h1
