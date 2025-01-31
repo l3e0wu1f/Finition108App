@@ -10,6 +10,8 @@ services:
       - /app/node_modules  # Exclude local node_modules
     environment:
       - NODE_ENV=production
+      - AWS_ACCESS_KEY_ID=DO003NB89L7TREA74BHW
+      - AWS_SECRET_ACCESS_KEY=cTm4w/ahaYGQmqv65x7fVsKBY/DWnIOMT7zvuCRwBvE
     restart: always
 
   frontend:
