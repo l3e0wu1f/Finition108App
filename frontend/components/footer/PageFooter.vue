@@ -8,7 +8,7 @@
         >
           <img
             class="h-24"
-            src="/img/logo.png"
+            src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/logo.png"
           >
           <p class="text-sm font-light -mt-2">
             Finition108 Inc ©2025
@@ -96,7 +96,7 @@
       >
         <img
           class="h-24"
-          src="/img/logo.png"
+          src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/logo.png"
         >
         <p class="text-sm font-light -mt-2">
           Finition108 Inc ©2025
