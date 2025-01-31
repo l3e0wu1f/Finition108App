@@ -1,17 +1,12 @@
-import express from 'express';
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
-import path from 'path'
-import cors from 'cors'
-
-// const express = require('express');
-// const cors = require('cors');
-// const path = require('path');
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3001;
-// const portfolioRoutes = require('./routes/portfolioRoutes');
-// const contactFormRoutes = require('./routes/contactFormRoutes');
-import portfolioRoutes from './routes/portfolioRoutes.js';  
-import contactFormRoutes from './routes/contactFormRoutes.js';  
+const portfolioRoutes = require('./routes/portfolioRoutes');
+const contactFormRoutes = require('./routes/contactFormRoutes');
+// import individual service
+const AWS = require('aws-sdk/clients/s3');
 
 app.use(cors());
 
@@ -21,33 +16,25 @@ app.use(express.json());  // Pour parser le JSON
 // app.use('/uploads', express.static(path.join(__dirname, 'public', 'uploads')));
 
 // Configure the S3 client
-const s3 = new S3Client({
-  region: 'tor1',  // Use 'tor1' for the Toronto region
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
-  },
+const s3 = new AWS.S3({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: 'tor1'
 });
 
+// Serve images from S3, including sub-directories
+app.get('/uploads/*', (req, res) => {
+  const filePath = req.params[0]; // Capture the full file path from the URL
 
-// Example function to upload an object to S3
-const uploadImage = async (file) => {
   const params = {
     Bucket: 'imagery',
-    Key: `uploads/${filepath}`,
-    Body: file.buffer,
-    ContentType: file.mimetype
+    Key: `uploads/${filePath}`, // Use the full file path including sub-directories
+    Expires: 60 // URL expiration time in seconds
   };
 
-  const command = new PutObjectCommand(params);
-  try {
-    const data = await s3.send(command);
-    console.log("Successfully uploaded object:", data);
-    return data;
-  } catch (error) {
-    console.error("Error uploading object:", error);
-  }
-};
+  const url = s3.getSignedUrl('getObject', params);
+  res.redirect(url);
+});
 
 
 app.get('/api', (req, res) => {
