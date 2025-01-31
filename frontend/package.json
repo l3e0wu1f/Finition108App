@@ -17,7 +17,7 @@
     "@nuxt/eslint": "^0.7.1",
     "@nuxt/image": "1.2.0",
     "@nuxt/ui": "^2.19.2",
-    "nuxt-i18n": "^6.28.1",
+    "@nuxtjs/i18n": "latest",
     "@nuxtjs/seo": "^2.0.2",
     "nuxt": "^3.13.0",
     "@nuxt/kit": "latest",
