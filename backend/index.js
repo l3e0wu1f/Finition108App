@@ -3,9 +3,9 @@ import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import path from 'path'
 import cors from 'cors'
 
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
+// const express = require('express');
+// const cors = require('cors');
+// const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const portfolioRoutes = require('./routes/portfolioRoutes');
