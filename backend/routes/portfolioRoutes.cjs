@@ -37,5 +37,3 @@ router.post('/portfolio', createPortfolio);
 router.delete('/portfolio/:id', deletePortfolio);
 
 module.exports = router;
-// Ensure default export
-export default router;
