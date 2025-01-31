@@ -15,7 +15,7 @@ RUN npm install -g nodemon
 COPY . .
 
 # Expose the backend service port
-EXPOSE 4000
+EXPOSE 3001
 
 # Start the application using the start script defined in package.json
 CMD ["npm", "start"]
