@@ -33,8 +33,7 @@ app.get('/uploads/*', (req, res) => {
 
   const url = s3.getSignedUrl('getObject', params);
   res.redirect(url);
-
-
+});
 
 
 app.get('/api', (req, res) => {
