@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const portfolioRoutes = require('./routes/portfolioRoutes');
 const contactFormRoutes = require('./routes/contactFormRoutes');
-const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3"; // Import S3 client and command
 
 app.use(cors());
 
