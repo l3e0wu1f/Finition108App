@@ -27,11 +27,8 @@ RUN npm install
 # Install necessary global Nuxt modules
 RUN npm install -g nuxt @nuxt/kit @nuxt/bridge
 
-# Install @nuxtjs/i18n and typescript
-RUN npm install -g @nuxtjs/i18n typescript --save
-
 # Install other necessary dev dependencies
-RUN npm i -D @iconify-json/lineicons
+# RUN npm i -D @iconify-json/lineicons
 
 # Copy the rest of the application code to the working directory
 COPY . .
