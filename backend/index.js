@@ -10,8 +10,8 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 // const portfolioRoutes = require('./routes/portfolioRoutes');
 // const contactFormRoutes = require('./routes/contactFormRoutes');
-import portfolioRoutes from './routes/portfolioRoutes.cjs';  
-import contactFormRoutes from './routes/contactFormRoutes.cjs';  
+import portfolioRoutes from './routes/portfolioRoutes.js';  
+import contactFormRoutes from './routes/contactFormRoutes.js';  
 
 app.use(cors());
 
