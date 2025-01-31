@@ -1,5 +1,5 @@
 # Dockerfile for front end
-FROM node:20
+FROM node:18
 
 ENV npm_config_platform=linux
 WORKDIR /app
@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 RUN rm -rf node_modules package-lock.json
 RUN npm install -g npm@6
 RUN npm install
-RUN npm install -g nuxt
+RUN npm install -g nuxt @nuxt/kit
 COPY . .
 
 EXPOSE 3000
