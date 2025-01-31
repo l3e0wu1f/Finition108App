@@ -11,9 +11,6 @@ RUN npm install
 # Install nodemon globally
 RUN npm install -g nodemon
 
-# Install Multer for S3 storage
-RUN npm install multer multer-s3
-
 # Copy the rest of the application code to the working directory
 COPY . .
 
