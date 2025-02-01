@@ -58,17 +58,14 @@ app.post('/upload', (req, res) => {
   });
 });
 
-app.use('/portfolio', portfolioRoutes); // Use your imported routes
-app.use('/contact', contactFormRoutes);  
-
-// app.get('/api', (req, res) => {
-//   console.log("Hello")
-//   res.json({ message: 'Hello from the back end!' });
-// });
+app.get('/api', (req, res) => {
+  console.log("Hello")
+  res.json({ message: 'Hello from the back end!' });
+});
 
 
-// app.use('/api', portfolioRoutes); 
-// app.use('/api', contactFormRoutes); 
+app.use('/api', portfolioRoutes); 
+app.use('/api', contactFormRoutes); 
 
 // Error handling middleware
 app.use((err, req, res, next) => {
