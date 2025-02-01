@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3001;
 const portfolioRoutes = require('./routes/portfolioRoutes');
 const contactFormRoutes = require('./routes/contactFormRoutes');
 // import individual service
@@ -11,6 +10,10 @@ const S3 = require('aws-sdk/clients/s3');
 app.use(cors());
 
 app.use(express.json());  // Pour parser le JSON
+
+// Define a route for the root URL
+app.get('/', (req, res) => {
+  res.send('Welcome to the Backend Service');
 
 // Existing code to serve images from the local 'uploads' directory
 // app.use('/uploads', express.static(path.join(__dirname, 'public', 'uploads')));
@@ -36,19 +39,39 @@ app.get('/uploads/*', (req, res) => {
   res.redirect(url);
 });
 
+// Example route for uploading to S3
+app.post('/upload', (req, res) => {
+  const params = {
+    Bucket: 'imagery',
+    Key: `uploads/${filePath}`,
+    Body: req.file.buffer,
+    ContentType: req.file.mimetype
+  };
+  s3.upload(params, (err, data) => {
+    if (err) {
+      console.error('Error uploading object:', err);
+      res.status(500).send('Error uploading object');
+    } else {
+      res.send(`Successfully uploaded object: ${data.Location}`);
+    }
+  });
 
-app.get('/api', (req, res) => {
-  console.log("Hello")
-  res.json({ message: 'Hello from the back end!' });
-});
+app.use('/portfolio', portfolioRoutes); // Use your imported routes
+app.use('/contact', contactFormRoutes);  
+
+// app.get('/api', (req, res) => {
+//   console.log("Hello")
+//   res.json({ message: 'Hello from the back end!' });
+// });
 
 
-app.use('/api', portfolioRoutes); 
-app.use('/api', contactFormRoutes); 
+// app.use('/api', portfolioRoutes); 
+// app.use('/api', contactFormRoutes); 
 
 
-
+// Start the server
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
-});
+
 
