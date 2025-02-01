@@ -48,7 +48,7 @@ const images = ref(null)
 
 onMounted(async () => {
   try {
-    const response = await fetch(`http://localhost:3001/portfolio/${id}`) // Adjust the endpoint as needed
+    const response = await fetch(`http://localhost:3001/api/portfolio/${id}`) // Adjust the endpoint as needed
     const data = await response.json()
     portfolio.value = data.portfolio
     images.value = data.images.map(image => `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${image}`);
