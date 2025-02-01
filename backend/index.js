@@ -7,7 +7,12 @@ const contactFormRoutes = require('./routes/contactFormRoutes');
 // import individual service
 const S3 = require('aws-sdk/clients/s3');
 
-app.use(cors());
+// Enable CORS for all routes
+app.use(cors({
+  origin: 'http://localhost:3000', // Allow requests from your frontend origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 app.use(express.json());  // Pour parser le JSON
 
