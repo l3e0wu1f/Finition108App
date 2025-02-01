@@ -55,6 +55,7 @@ app.post('/upload', (req, res) => {
       res.send(`Successfully uploaded object: ${data.Location}`);
     }
   });
+});
 
 app.use('/portfolio', portfolioRoutes); // Use your imported routes
 app.use('/contact', contactFormRoutes);  
