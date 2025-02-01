@@ -40,7 +40,7 @@ app.get('/uploads/*', (req, res) => {
   res.redirect(url);
 });
 
-// Example route for uploading to S3
+// Route for uploading to S3
 app.post('/upload', (req, res) => {
   const params = {
     Bucket: 'imagery',
@@ -70,6 +70,11 @@ app.use('/contact', contactFormRoutes);
 // app.use('/api', portfolioRoutes); 
 // app.use('/api', contactFormRoutes); 
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 
 // Start the server
 const PORT = process.env.PORT || 3001;
