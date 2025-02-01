@@ -5,6 +5,8 @@ services:
       context: ./backend
     ports:
       - "3001:3001"
+    networks:
+      - mynetwork
     volumes:
       - ./backend:/app
       - /app/node_modules  # Exclude local node_modules
@@ -22,10 +24,16 @@ services:
       - npm_config_platform=linux
     ports:
       - "3000:3000"
+    networks:
+      - mynetwork
     volumes:
       - ./frontend:/app
       - /app/node_modules  # Exclude local node_modules
     restart: always
+
+  networks:
+    mynetwork:
+      driver: bridge
 
     
 # services:
