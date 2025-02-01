@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const S3 = require('aws-sdk/clients/s3');
 // const { LOCAL_PATH } = require('../env.js');
-const { LOCAL_PATH } = '';
+const { LOCAL_PATH } = 'http://localhost:3001/';
 
 // Configure the S3 client
 const s3 = new S3({
