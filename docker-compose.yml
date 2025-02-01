@@ -31,9 +31,9 @@ services:
       - /app/node_modules  # Exclude local node_modules
     restart: always
 
-  networks:
-    mynetwork:
-      driver: bridge
+networks:
+  mynetwork:
+    driver: bridge
 
     
 # services:
