@@ -12,7 +12,7 @@ const s3 = new S3({
 
 // Path to the portfolio.json file
 const portfolioFilePath = path.join(LOCAL_PATH, 'utils/portfolioList.json');
-const uploadsPath = path.join(LOCAL_PATH, 'public/uploads'
+const uploadsPath = path.join(LOCAL_PATH, 'public/uploads');
 
 // Helper function to get the list of files in a directory
 const getFilesFromDirectory = (dirPath) => {
