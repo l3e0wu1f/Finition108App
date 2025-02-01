@@ -7,6 +7,8 @@ const contactFormRoutes = require('./routes/contactFormRoutes');
 // import individual service
 const S3 = require('aws-sdk/clients/s3');
 
+header("Access-Control-Allow-Origin: *");
+
 // Enable CORS for all routes
 app.use(cors({
   origin: ['http://localhost:3000', 'http://localhost:3001'], // Allow requests from your front/back end origins
