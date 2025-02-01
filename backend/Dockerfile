@@ -11,6 +11,7 @@ COPY package*.json ./
 
 # Install dependencies
 RUN npm install
+RUN npm install multer-s3
 
 # Install nodemon globally
 RUN npm install -g nodemon
