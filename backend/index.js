@@ -14,6 +14,7 @@ app.use(express.json());  // Pour parser le JSON
 // Define a route for the root URL
 app.get('/', (req, res) => {
   res.send('Welcome to the Backend Service');
+});
 
 // Existing code to serve images from the local 'uploads' directory
 // app.use('/uploads', express.static(path.join(__dirname, 'public', 'uploads')));
