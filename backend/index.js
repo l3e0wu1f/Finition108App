@@ -9,7 +9,7 @@ const S3 = require('aws-sdk/clients/s3');
 
 // Enable CORS for all routes
 app.use(cors({
-  origin: 'http://localhost:3000', // Allow requests from your frontend origin
+  origin: ['http://localhost:3000', 'http://localhost:3001'], // Allow requests from your front/back end origins
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true // Allow cookies to be sent with requests
