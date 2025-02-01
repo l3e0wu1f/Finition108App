@@ -1,5 +1,5 @@
 module.exports = {
     EMAIL : 'laurine996@gmail.com',
     PASSWORD : 'xlwwjaikatvaqrlg',
-    LOCAL_PATH : 'http://localhost:3001/',
+    LOCAL_PATH : 'http://localhost:3001',
 }
