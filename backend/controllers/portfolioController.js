@@ -1,13 +1,18 @@
 const fs = require('fs');
 const path = require('path');
-const S3 = require('aws-sdk/clients/s3');
 const { LOCAL_PATH } = require('../env.js');
 
 // Configure the S3 client
-const s3 = new S3({
+const AWS = require('aws-sdk');
+
+const spacesEndpoint = new AWS.Endpoint('https://imagery.tor1.digitaloceanspaces.com');
+const s3 = new AWS.S3({
+  endpoint: spacesEndpoint,
   accessKeyId: process.env.DO_SPACES_KEY,
   secretAccessKey: process.env.DO_SPACES_SECRET,
-  region: 'tor1'
+  region: 'us-east-1', // Ensure the region is correctly set
+  s3ForcePathStyle: true, // Required for DigitalOcean Spaces
+  signatureVersion: 'v4',
 });
 
 // Path to the portfolio.json file
@@ -29,6 +34,31 @@ const getFilesFromS3Directory = async (dir) => {
   } catch (error) {
     console.error(`Error listing objects in S3 directory: ${dir}`, error);
     return [];
+  }
+};
+
+exports.getPortfolioById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const portfolioFilePath = path.join(LOCAL_PATH, 'utils', 'portfolioList.json');
+    const portfolios = JSON.parse(fs.readFileSync(portfolioFilePath, 'utf-8'));
+    const portfolio = portfolios.find(p => p.filepath === id);
+
+    if (portfolio) {
+      const images = await getFilesFromS3Directory(portfolio.filepath);
+      const imageUrls = images.map(image => `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${portfolio.filepath}/${image}`);
+      // Include all images in the directory
+      res.status(200).json({ 
+        portfolio,
+        images: imageUrls 
+      });
+    } else {
+      res.status(404).json({ message: 'Portfolio not found' });
+    }
+  } catch (error) {
+    console.error('Error fetching portfolio:', error);
+    res.status(500).json({ message: 'Error fetching portfolio', error: error.message });
   }
 };
 
@@ -60,32 +90,6 @@ exports.getAllPortfolios = async (req, res) => {
   } catch (error) {
     console.error('Error fetching portfolios:', error);
     res.status(500).json({ message: 'Error fetching portfolios', error: error.message });
-  }
-};
-
-  
-exports.getPortfolioById = async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    const portfolioFilePath = path.join(LOCAL_PATH, 'utils', 'portfolioList.json');
-    const portfolios = JSON.parse(fs.readFileSync(portfolioFilePath, 'utf-8'));
-    const portfolio = portfolios.find(p => p.filepath === id);
-
-    if (portfolio) {
-      const images = await getFilesFromS3Directory(portfolio.filepath);
-      const imageUrls = images.map(image => `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${portfolio.filepath}/${image}`);
-      // Include all images in the directory
-      res.status(200).json({ 
-        portfolio,
-        images: imageUrls 
-      });
-    } else {
-      res.status(404).json({ message: 'Portfolio not found' });
-    }
-  } catch (error) {
-    console.error('Error fetching portfolio:', error);
-    res.status(500).json({ message: 'Error fetching portfolio', error: error.message });
   }
 };
 
