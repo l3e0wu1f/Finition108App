@@ -60,7 +60,7 @@ const listKeys = async (bucketName, prefix) => {
 
 console.log('Listing images from uploads:');
 listKeys('imagery', 'uploads/');
-consaole.log('Listing contents from bucket root:');
+console.log('Listing contents from bucket root:');
 listKeys('imagery', '');
 
 
