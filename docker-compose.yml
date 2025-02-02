@@ -13,8 +13,9 @@ services:
     environment:
       - PORT=3001
       - NODE_ENV=production
-      - AWS_ACCESS_KEY_ID="DO003NB89L7TREA74BHW"
-      - AWS_SECRET_ACCESS_KEY="cTm4w/ahaYGQmqv65x7fVsKBY/DWnIOMT7zvuCRwBvE"
+      - DO_SPACES_KEY="DO003NB89L7TREA74BHW"
+      - DO_SPACES_SECRET="cTm4w/ahaYGQmqv65x7fVsKBY/DWnIOMT7zvuCRwBvE"
+      - DO_SPACES_BUCKET="imagery"
     restart: always
 
   frontend:
