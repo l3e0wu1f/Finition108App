@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 // app.use('/uploads', express.static(path.join(__dirname, 'public', 'uploads')));
 
 // Configure the S3 client
-const spacesEndpoint = new AWS.Endpoint('https://imagery.tor1.digitaloceanspaces.com');
+const spacesEndpoint = new AWS.Endpoint('https://tor1.digitaloceanspaces.com');
 const s3 = new AWS.S3({
   endpoint: spacesEndpoint,
   accessKeyId: process.env.DO_SPACES_KEY,
