@@ -117,8 +117,8 @@ app.get('/api', (req, res) => {
 });
 
 
-app.use('/api', portfolioRoutes);
-app.use('/api', contactFormRoutes);
+app.use('/', portfolioRoutes);
+app.use('/', contactFormRoutes);
 
 
 // Error handling middleware
