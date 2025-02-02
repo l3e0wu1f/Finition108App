@@ -18,10 +18,15 @@ router.get('/all', getAllPortfolios);
 // });
 
 // Configure the S3 client
-const s3 = new S3({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: 'tor1'
+const spacesEndpoint = new AWS.Endpoint('https://tor1.digitaloceanspaces.com');
+
+const s3 = new AWS.S3({
+  endpoint: spacesEndpoint,
+  accessKeyId: process.env.DO_SPACES_KEY,
+  secretAccessKey: process.env.DO_SPACES_SECRET,
+  region: 'us-east-1',
+  s3ForcePathStyle: true,
+  signatureVersion: 'v4',
 });
 
 // const upload = multer({
