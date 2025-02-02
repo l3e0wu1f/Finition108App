@@ -5,7 +5,7 @@ const { LOCAL_PATH } = require('../env.js');
 // Configure the S3 client
 const AWS = require('aws-sdk');
 
-const spacesEndpoint = new AWS.Endpoint('https://imagery.tor1.digitaloceanspaces.com');
+const spacesEndpoint = new AWS.Endpoint('https://tor1.digitaloceanspaces.com');
 const s3 = new AWS.S3({
   endpoint: spacesEndpoint,
   accessKeyId: process.env.DO_SPACES_KEY,
