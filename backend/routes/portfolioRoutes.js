@@ -5,18 +5,6 @@ const router = express.Router();
 const AWS = require('aws-sdk');
 const { getAllPortfolios, getPortfolioById, updatePortfolio, createPortfolio, deletePortfolio } = require('../controllers/portfolioController');
 
-router.get('/all', getAllPortfolios); 
-
-// https://medium.com/swlh/how-to-upload-image-using-multer-in-node-js-f3aeffb90657
-// var storage = multer.diskStorage({ 
-//   destination: function (req, file, cb) {
-//       cb(null, '../tempDir/')
-//   },
-//   filename: function (req, file, cb) {
-//       cb(null, file.originalname)
-//   }
-// });
-
 // Configure the S3 client
 const spacesEndpoint = new AWS.Endpoint('https://tor1.digitaloceanspaces.com');
 
