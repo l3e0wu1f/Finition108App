@@ -51,6 +51,10 @@ const upload = multer({
   }
 });
 
+// Define routes
+router.get('/all', getAllPortfolios); // Route to get all portfolios
+router.get('/:id', getPortfolioById); 
+
 router.get('/portfolio/all', getAllPortfolios);
 router.get('/portfolio/:id', getPortfolioById);
 router.put('/portfolio/:id', updatePortfolio);
