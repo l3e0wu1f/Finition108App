@@ -22,4 +22,9 @@ export default defineNuxtConfig({
         strategy: 'prefix_except_default',
         lazy: true,
     },
+    server: {
+        host: '0.0.0.0', // Default: localhost
+        port: 3000, // Default: 3000
+        allowedHosts: ['finition108.io'] // Add your domain here
+    }
 })
