@@ -30,6 +30,7 @@ const getFilesFromS3Directory = async (dir) => {
     console.error(`Error listing objects in S3 directory: ${dir}`, error);
     return [];
   }
+};
 
 
 // 1. Get all portfolios with one image per portfolio
