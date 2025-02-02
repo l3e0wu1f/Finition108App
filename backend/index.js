@@ -25,6 +25,12 @@ app.get('/', (req, res) => {
 // Existing code to serve images from the local 'uploads' directory
 // app.use('/uploads', express.static(path.join(__dirname, 'public', 'uploads')));
 
+// Middleware to redirect /uploads requests to CDN
+app.use('/uploads', (req, res) => {
+  const url = `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads${req.path}`;
+  res.redirect(url);
+});
+
 // Configure the S3 client
 const s3 = new S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -33,18 +39,18 @@ const s3 = new S3({
 });
 
 // Serve images from S3, including sub-directories
-app.get('/uploads/*', (req, res) => {
-  const filePath = req.params[0]; // Capture the full file path from the URL
+// app.get('/uploads/*', (req, res) => {
+//   const filePath = req.params[0]; // Capture the full file path from the URL
 
-  const params = {
-    Bucket: 'imagery',
-    Key: `uploads/${filePath}`, // Use the full file path including sub-directories
-    Expires: 60 // URL expiration time in seconds
-  };
+//   const params = {
+//     Bucket: 'imagery',
+//     Key: `uploads/${filePath}`, // Use the full file path including sub-directories
+//     Expires: 60 // URL expiration time in seconds
+//   };
 
-  const url = s3.getSignedUrl('getObject', params);
-  res.redirect(url);
-});
+//   const url = s3.getSignedUrl('getObject', params);
+//   res.redirect(url);
+// });
 
 // Route for uploading to S3
 app.post('/upload', (req, res) => {
