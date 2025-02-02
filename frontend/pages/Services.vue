@@ -33,12 +33,14 @@
           <nuxt-link
             :to="localePath('aboutus')"
             class="primary-button w-40"
+            href="/AboutUs"
           >
             {{ locale === 'fr' ? 'Plus sur nous' : 'More about us' }}
           </nuxt-link>
           <nuxt-link
             :to="localePath('contact')"
             class="primary-button w-40"
+            href="/Contact"
           >
             {{ locale === 'fr' ? 'Nous contacter' : 'Contact us' }}
           </nuxt-link>
@@ -402,6 +404,7 @@
       <nuxt-link
         :to="localePath('process')"
         class="primary-button mt-6"
+        href="/Process"
       >
         {{ locale === 'en' ? 'See our process' : 'Voir notre processus' }}
       </nuxt-link>
