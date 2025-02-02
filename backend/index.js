@@ -75,6 +75,17 @@ app.get('/api', (req, res) => {
   res.json({ message: 'Hello from the back end!' });
 });
 
+app.get('/api/portfolio/all', (req, res) => {
+  try {
+    const portfolios = getAllPortfolios();
+    res.json({ portfolios });
+  } catch (error) {
+    console.error('Error fetching portfolios:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
 app.use('/api', portfolioRoutes);
 app.use('/api', contactFormRoutes);
 // app.use('/api', portfolioRoutes); 
