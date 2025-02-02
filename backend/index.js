@@ -50,6 +50,7 @@ const listKeys = async (bucketName, prefix) => {
   };
 
   try {
+    console.log(`Listing objects with Bucket: ${bucketName}, Prefix: ${prefix}`);
     const data = await s3.listObjectsV2(params).promise();
     console.log('Keys:', data.Contents.map(obj => obj.Key));
   } catch (error) {
@@ -58,6 +59,8 @@ const listKeys = async (bucketName, prefix) => {
 };
 
 listKeys('imagery', 'uploads/');
+listKeys('imagery', '');
+
 
 // Middleware for file uploads using multer-s3
 const upload = multer({
