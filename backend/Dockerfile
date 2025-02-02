@@ -3,15 +3,13 @@ FROM node:18
 WORKDIR /app
 
 ENV NODE_ENV=production
-ENV AWS_ACCESS_KEY_ID=DO003NB89L7TREA74BHW
-ENV AWS_SECRET_ACCESS_KEY=cTm4w/ahaYGQmqv65x7fVsKBY/DWnIOMT7zvuCRwBvE
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
-RUN npm install npm install @dcl/s3
+RUN npm install multer-s3
 
 # Install nodemon globally
 RUN npm install -g nodemon
