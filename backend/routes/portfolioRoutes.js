@@ -56,11 +56,11 @@ const upload = multer({
   }
 });
 
-router.get('/all', getAllPortfolios);
-router.get('/:id', getPortfolioById);
-router.put('/:id', updatePortfolio);
-// router.post('/portfolio', createPortfolio);
-router.post('/', upload.single('file'), createPortfolio); // Handle file uploads
-router.delete('/:id', deletePortfolio);
+router.get('/portfolio/all', getAllPortfolios);
+router.get('/portfolio/:id', getPortfolioById);
+router.put('/portfolio/:id', updatePortfolio);
+router.post('/portfolio', createPortfolio);
+// router.post('/', upload.single('file'), createPortfolio); // Handle file uploads
+router.delete('/portfolio/:id', deletePortfolio);
 
 module.exports = router;
