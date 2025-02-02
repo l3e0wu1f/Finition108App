@@ -58,7 +58,9 @@ const listKeys = async (bucketName, prefix) => {
   }
 };
 
+console.log('Listing images from uploads:');
 listKeys('imagery', 'uploads/');
+consaole.log('Listing contents from bucket root:');
 listKeys('imagery', '');
 
 
@@ -117,8 +119,7 @@ app.get('/api', (req, res) => {
 
 app.use('/api', portfolioRoutes);
 app.use('/api', contactFormRoutes);
-// app.use('/api', portfolioRoutes); 
-// app.use('/api', contactFormRoutes); 
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
