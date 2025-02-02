@@ -38,6 +38,27 @@ const s3 = new AWS.S3({
   signatureVersion: 'v4',
 });
 
+const params = {
+  Bucket: 'imagery',
+  Prefix: `uploads/${dir}/`, // Prefix to list objects within the directory
+};
+
+const listKeys = async (bucketName, prefix) => {
+  const params = {
+    Bucket: bucketName,
+    Prefix: prefix,
+  };
+
+  try {
+    const data = await s3.listObjectsV2(params).promise();
+    console.log('Keys:', data.Contents.map(obj => obj.Key));
+  } catch (error) {
+    console.error('Error listing objects:', error);
+  }
+};
+
+listKeys('imagery', 'uploads/');
+
 // Middleware for file uploads using multer-s3
 const upload = multer({
   storage: multerS3({
