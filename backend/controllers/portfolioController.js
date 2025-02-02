@@ -5,8 +5,8 @@ const { LOCAL_PATH } = require('../env.js');
 
 // Configure the S3 client
 const s3 = new S3({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  accessKeyId: process.env.DO_SPACES_KEY,
+  secretAccessKey: process.env.DO_SPACES_SECRET,
   region: 'tor1'
 });
 
@@ -17,61 +17,62 @@ const portfolioFilePath = path.join(LOCAL_PATH, 'utils/portfolioList.json');
 const uploadsPath = 'https://imagery.tor1.cdn.digitaloceanspaces.com/uploads';
 // const uploadsPath = path.join(LOCAL_PATH, 'public/uploads');
 
-// Helper function to get the list of files in a directory
-const getFilesFromDirectory = (dirPath) => {
-    return fs.readdirSync(dirPath).filter(file => {
-      // Only return image files (you can expand this based on your needs)
-      return file.endsWith('.png') || file.endsWith('.jpg') || file.endsWith('.jpeg');
-    });
+const getFilesFromS3Directory = async (dir) => {
+  const params = {
+    Bucket: 'imagery',
+    Prefix: `uploads/${dir}/`, // Prefix to list objects within the directory
   };
 
-// 1. Get all portfolios with one image per portfolio
-exports.getAllPortfolios = (req, res) => { 
   try {
-    // Log file path for debugging
-    console.log(`Reading from: ${portfolioFilePath}`);
+    const data = await s3.listObjectsV2(params).promise();
+    return data.Contents.map(obj => obj.Key.replace(`uploads/${dir}/`, ''));
+  } catch (error) {
+    console.error(`Error listing objects in S3 directory: ${dir}`, error);
+    return [];
+  }
 
-    if (!fs.existsSync(portfolioFilePath)) {
-      throw new Error(`File not found: ${portfolioFilePath}`);
-    }
 
+// 1. Get all portfolios with one image per portfolio
+exports.getAllPortfolios = async (req, res) => { 
+  try {
+    // Read JSON file
+    const portfolioFilePath = path.join(LOCAL_PATH, 'utils', 'portfolioList.json');
     const fileContent = fs.readFileSync(portfolioFilePath, 'utf-8');
     const portfolios = JSON.parse(fileContent);
     console.log('Portfolios fetched:', portfolios);
 
-    const portfoliosWithImages = portfolios.map(portfolio => {
-      const portfolioDir = path.join(uploadsPath, portfolio.filepath, 'cover');
-      const primaryImg = getFilesFromDirectory(path.join(portfolioDir, 'primary'));
-      const hoverImg = getFilesFromDirectory(path.join(portfolioDir, 'hover'));
+    const portfoliosWithImages = await Promise.all(portfolios.map(async (portfolio) => {
+      const primaryImgs = await getFilesFromS3Directory(`${portfolio.filepath}/cover/primary`);
+      const hoverImgs = await getFilesFromS3Directory(`${portfolio.filepath}/cover/hover`);
 
-      const primaryUrl = primaryImg.length > 0 ? `/uploads/${portfolio.filepath}/cover/primary/${primaryImg}` : null;
-      const hoverUrl = hoverImg.length > 0 ? `/uploads/${portfolio.filepath}/cover/hover/${hoverImg}` : null;
+      const primaryUrl = primaryImgs.length > 0 ? `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${portfolio.filepath}/cover/primary/${primaryImgs[0]}` : null;
+      const hoverUrl = hoverImgs.length > 0 ? `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${portfolio.filepath}/cover/hover/${hoverImgs[0]}` : null;
 
       return { 
         ...portfolio, 
         primary: primaryUrl,
         hover: hoverUrl
       };
-    });
+    }));
 
     res.status(200).json({ portfolios: portfoliosWithImages });
   } catch (error) {
     console.error('Error fetching portfolios:', error);
     res.status(500).json({ message: 'Error fetching portfolios', error: error.message });
   }
-};
+
   
-exports.getPortfolioById = (req, res) => { 
+exports.getPortfolioById = async (req, res) => {
   const { id } = req.params;
 
   try {
+    const portfolioFilePath = path.join(LOCAL_PATH, 'utils', 'portfolioList.json');
     const portfolios = JSON.parse(fs.readFileSync(portfolioFilePath, 'utf-8'));
     const portfolio = portfolios.find(p => p.filepath === id);
 
     if (portfolio) {
-      const portfolioDir = path.join(uploadsPath, portfolio.filepath);
-      const images = getFilesFromDirectory(portfolioDir);
-      const imageUrls = images.map(image => `/uploads/${portfolio.filepath}/${image}`);
+      const images = await getFilesFromS3Directory(portfolio.filepath);
+      const imageUrls = images.map(image => `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${portfolio.filepath}/${image}`);
       // Include all images in the directory
       res.status(200).json({ 
         portfolio,
@@ -81,7 +82,8 @@ exports.getPortfolioById = (req, res) => {
       res.status(404).json({ message: 'Portfolio not found' });
     }
   } catch (error) {
-    res.status(500).json({ message: 'Error fetching portfolio', error });
+    console.error('Error fetching portfolio:', error);
+    res.status(500).json({ message: 'Error fetching portfolio', error: error.message });
   }
 };
 
