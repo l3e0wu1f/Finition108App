@@ -5,6 +5,8 @@ const router = express.Router();
 const S3 = require('aws-sdk/clients/s3');
 const { getAllPortfolios, getPortfolioById, updatePortfolio, createPortfolio, deletePortfolio } = require('../controllers/portfolioController');
 
+router.get('/all', getAllPortfolios); 
+
 // https://medium.com/swlh/how-to-upload-image-using-multer-in-node-js-f3aeffb90657
 // var storage = multer.diskStorage({ 
 //   destination: function (req, file, cb) {
