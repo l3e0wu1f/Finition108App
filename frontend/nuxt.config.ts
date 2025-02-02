@@ -22,33 +22,6 @@ export default defineNuxtConfig({
         strategy: 'prefix_except_default',
         lazy: true,
     },
-    routes: {
-        {
-            path: '/AboutUs',
-            name: 'aboutus',
-            component: 'pages/AboutUs.vue'
-        },
-        {
-            path: '/Services',
-            name: 'services',
-            component: 'pages/Services.vue'
-        },
-        {
-            path: '/Process',
-            name: 'process',
-            component: 'pages/Process.vue'
-        },
-        {
-            path: '/Contact',
-            name: 'contact',
-            component: 'pages/Contact.vue'
-        },
-        {
-            path: '/portfolio/all',
-            name: 'portfolio',
-            component: 'pages/portfolio/all.vue'
-        },  
-    },
     server: {
         host: '159.203.52.35', // Default: localhost
         port: 3000, // Default: 3000
