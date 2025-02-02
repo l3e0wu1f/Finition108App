@@ -25,6 +25,6 @@ export default defineNuxtConfig({
     server: {
         host: '159.203.52.35', // Default: localhost
         port: 3000, // Default: 3000
-        allowedHosts: ['finition108.io'] // Add your domain here
+        allowedHosts: ['finition108.io', 'localhost'] // Add your domain here
     }
 })
