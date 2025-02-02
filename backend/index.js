@@ -40,7 +40,7 @@ const s3 = new AWS.S3({
 
 const params = {
   Bucket: 'imagery',
-  Prefix: `uploads/${dir}/`, // Prefix to list objects within the directory
+  Prefix: `uploads/`, // Prefix to list objects within the directory
 };
 
 const listKeys = async (bucketName, prefix) => {
