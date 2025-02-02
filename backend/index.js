@@ -27,8 +27,6 @@ app.get('/', (req, res) => {
 // Existing code to serve images from the local 'uploads' directory
 // app.use('/uploads', express.static(path.join(__dirname, 'public', 'uploads')));
 
-const spacesEndpoint = new AWS.Endpoint('imagery.tor1.cdn.digitaloceanspaces.com');
-
 // Configure the S3 client
 const spacesEndpoint = new AWS.Endpoint('https://imagery.tor1.digitaloceanspaces.com');
 const s3 = new AWS.S3({
