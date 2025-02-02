@@ -5,7 +5,7 @@ const app = express();
 const portfolioRoutes = require('./routes/portfolioRoutes');
 const contactFormRoutes = require('./routes/contactFormRoutes');
 // import individual service
-const S3 = require('aws-sdk/clients/s3');
+const S3 = require('@dcl/s3');
 
 // Enable CORS for all routes
 app.use(cors({
@@ -31,35 +31,40 @@ app.use('/uploads', (req, res) => {
   res.redirect(url);
 });
 
+const spacesEndpoint = new S3.Endpoint('imagery.tor1.digitaloceanspaces.com');
+
 // Configure the S3 client
 const s3 = new S3({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: 'tor1'
+  endpoint: spacesEndpoint,
+  key: process.env.DO_SPACES_KEY,
+  secret: process.env.DO_SPACES_SECRET,
+  bucket: process.env.DO_SPACES_BUCKET
 });
 
 // Serve images from S3, including sub-directories
-// app.get('/uploads/*', (req, res) => {
-//   const filePath = req.params[0]; // Capture the full file path from the URL
+app.get('/uploads/*', (req, res) => {
+  const filePath = req.params[0]; // Capture the full file path from the URL
 
-//   const params = {
-//     Bucket: 'imagery',
-//     Key: `uploads/${filePath}`, // Use the full file path including sub-directories
-//     Expires: 60 // URL expiration time in seconds
-//   };
+  const params = {
+    Bucket: 'imagery',
+    Key: `uploads/${filePath}`, // Use the full file path including sub-directories
+    Expires: 60 // URL expiration time in seconds
+  };
 
-//   const url = s3.getSignedUrl('getObject', params);
-//   res.redirect(url);
-// });
+  const url = s3.getSignedUrl('getObject', params);
+  res.redirect(url);
+});
 
 // Route for uploading to S3
-app.post('/upload', (req, res) => {
+app.post('/upload', upload.single('file'), (req, res) => {
+  const filePath = req.file.originalname;
   const params = {
     Bucket: 'imagery',
     Key: `uploads/${filePath}`,
     Body: req.file.buffer,
-    ContentType: req.file.mimetype
+    ContentType: req.file.mimetype,
   };
+
   s3.upload(params, (err, data) => {
     if (err) {
       console.error('Error uploading object:', err);
