@@ -60,6 +60,7 @@ exports.getAllPortfolios = async (req, res) => {
     console.error('Error fetching portfolios:', error);
     res.status(500).json({ message: 'Error fetching portfolios', error: error.message });
   }
+};
 
   
 exports.getPortfolioById = async (req, res) => {
