@@ -25,14 +25,14 @@ const uploadsPath = 'https://imagery.tor1.cdn.digitaloceanspaces.com/uploads';
 const getFilesFromS3Directory = async (dir) => {
   const params = {
     Bucket: 'imagery',
-    Prefix: `uploads/${dir}/`, // Prefix to list objects within the directory
+    Prefix: `uploads/`, // Prefix to list objects within the directory
   };
 
   try {
     const data = await s3.listObjectsV2(params).promise();
-    return data.Contents.map(obj => obj.Key.replace(`uploads/${dir}/`, ''));
+    return data.Contents.map(obj => obj.Key.replace(`uploads/`, ''));
   } catch (error) {
-    console.error(`Error listing objects in S3 directory: ${dir}`, error);
+    console.error(`Error listing objects in S3 directory: uploads/`, error);
     return [];
   }
 };
