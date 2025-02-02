@@ -37,6 +37,9 @@ const getFilesFromS3Directory = async (dir) => {
   }
 };
 
+const dir = 'uploads/'; // Define the directory you want to list
+getFilesFromS3Directory(dir);
+
 
 // 1. Get all portfolios with one image per portfolio
 exports.getAllPortfolios = async (req, res) => { 
