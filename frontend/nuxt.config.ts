@@ -29,18 +29,18 @@ export default defineNuxtConfig({
             component: 'pages/AboutUs.vue'
         },
         {
-            path: '/AboutUs',
-            name: 'aboutus',
+            path: '/Services',
+            name: 'services',
             component: 'pages/Services.vue'
         },
         {
-            path: '/AboutUs',
-            name: 'aboutus',
+            path: '/Process',
+            name: 'process',
             component: 'pages/Process.vue'
         },
         {
             path: '/Contact',
-            name: 'aboutus',
+            name: 'contact',
             component: 'pages/Contact.vue'
         },
         {
