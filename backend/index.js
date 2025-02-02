@@ -27,14 +27,14 @@ app.get('/', (req, res) => {
 // Existing code to serve images from the local 'uploads' directory
 // app.use('/uploads', express.static(path.join(__dirname, 'public', 'uploads')));
 
-const spacesEndpoint = new AWS.Endpoint('imagery.tor1.digitaloceanspaces.com');
+const spacesEndpoint = new AWS.Endpoint('imagery.tor1.cdn.digitaloceanspaces.com');
 
 // Configure the S3 client
 const s3 = new AWS.S3({
   endpoint: spacesEndpoint,
   accessKeyId: process.env.DO_SPACES_KEY,
   secretAccessKey: process.env.DO_SPACES_SECRET,
-  region: 'tor1'
+  region: 'us-east-1'
 });
 
 // Middleware for file uploads using multer-s3
