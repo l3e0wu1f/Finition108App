@@ -30,11 +30,14 @@ app.get('/', (req, res) => {
 const spacesEndpoint = new AWS.Endpoint('imagery.tor1.cdn.digitaloceanspaces.com');
 
 // Configure the S3 client
+const spacesEndpoint = new AWS.Endpoint('https://imagery.tor1.digitaloceanspaces.com');
 const s3 = new AWS.S3({
   endpoint: spacesEndpoint,
   accessKeyId: process.env.DO_SPACES_KEY,
   secretAccessKey: process.env.DO_SPACES_SECRET,
-  region: 'us-east-1'
+  region: 'us-east-1', // Ensure the region is correctly set
+  s3ForcePathStyle: true, // Required for DigitalOcean Spaces
+  signatureVersion: 'v4',
 });
 
 // Middleware for file uploads using multer-s3
