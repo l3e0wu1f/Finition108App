@@ -2,10 +2,12 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const app = express();
+const multer = require('multer');
+const multerS3 = require('multer-s3');
 const portfolioRoutes = require('./routes/portfolioRoutes');
 const contactFormRoutes = require('./routes/contactFormRoutes');
 // import individual service
-const S3 = require('@dcl/s3');
+const AWS = require('aws-sdk');
 
 // Enable CORS for all routes
 app.use(cors({
@@ -25,20 +27,27 @@ app.get('/', (req, res) => {
 // Existing code to serve images from the local 'uploads' directory
 // app.use('/uploads', express.static(path.join(__dirname, 'public', 'uploads')));
 
-// Middleware to redirect /uploads requests to CDN
-app.use('/uploads', (req, res) => {
-  const url = `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads${req.path}`;
-  res.redirect(url);
-});
-
-const spacesEndpoint = new S3.Endpoint('imagery.tor1.digitaloceanspaces.com');
+const spacesEndpoint = new AWS.Endpoint('imagery.tor1.digitaloceanspaces.com');
 
 // Configure the S3 client
-const s3 = new S3({
+const s3 = new AWS.S3({
   endpoint: spacesEndpoint,
-  key: process.env.DO_SPACES_KEY,
-  secret: process.env.DO_SPACES_SECRET,
-  bucket: process.env.DO_SPACES_BUCKET
+  accessKeyId: process.env.DO_SPACES_KEY,
+  secretAccessKey: process.env.DO_SPACES_SECRET,
+  region: 'tor1'
+});
+
+// Middleware for file uploads using multer-s3
+const upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: 'imagery',
+    acl: 'public-read', // Adjust the ACL as needed
+    key: (req, file, cb) => {
+      const filePath = `uploads/${file.originalname}`;
+      cb(null, filePath);
+    }
+  })
 });
 
 // Serve images from S3, including sub-directories
