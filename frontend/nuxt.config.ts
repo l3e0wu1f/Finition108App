@@ -22,9 +22,40 @@ export default defineNuxtConfig({
         strategy: 'prefix_except_default',
         lazy: true,
     },
-    plugins: [
-        '~/router.js' // Register the router plugin
-    ],
+    hooks: {
+        'vue-renderer:context': (context) => {
+          // Customize context as needed
+        }
+    },
+    extendRoutes(routes, resolve) {
+        routes.push(
+            {
+                path: '/AboutUs',
+                name: 'aboutus',
+                component: resolve(__dirname, 'pages/AboutUs.vue')
+            },
+            {
+                path: '/Services',
+                name: 'services',
+                component: resolve(__dirname, 'pages/Services.vue')
+            },
+            {
+                path: '/Process',
+                name: 'process',
+                component: resolve(__dirname, 'pages/Process.vue')
+            },
+            {
+                path: '/Contact',
+                name: 'contact',
+                component: resolve(__dirname, 'pages/Contact.vue')
+            },
+            {
+                path: '/portfolio/all',
+                name: 'portfolio',
+                component: resolve(__dirname, 'pages/portfolio/all.vue')
+            }
+        )
+    },
     server: {
         host: '159.203.52.35', // Default: localhost
         port: 3000, // Default: 3000
