@@ -54,6 +54,11 @@ onMounted(async () => {
     const data = await response.json()
     console.log(data);
     portfolios.value = data.portfolios
+
+    // Try to parse the response as JSON
+    const data = JSON.parse(responseText);
+    console.log(data);
+    portfolios.value = data.portfolios;
     
     // Assume the first portfolio's description for now
     if (data.portfolios.length > 0) {
