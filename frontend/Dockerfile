@@ -2,7 +2,7 @@ FROM node:20
 
 ENV npm_config_platform=linux
 ENV NODE_ENV=production
-ENV BASE_URL=http://159.203.52.35
+ENV API_BASE_URL=http://159.203.52.35:3001
 
 WORKDIR /app
 
