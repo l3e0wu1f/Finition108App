@@ -24,6 +24,7 @@ services:
     environment:
       - NODE_ENV=production
       - npm_config_platform=linux
+      - API_BASE_URL=159.203.52.35:3001
     ports:
       - "3000:3000"
     networks:
