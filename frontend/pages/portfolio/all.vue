@@ -50,7 +50,7 @@ const portfolio = ref({ descriptionfr: '', descriptionen: '' }) // Initialize th
 
 onMounted(async () => {
   try {
-    const response = await fetch(`${process.env.BASE_URL}:3001/api/portfolio/all`) // Use environment variable for the base URL
+    const response = await fetch(`${process.env.API_BASE_URL}/api/portfolio/all`) // Use environment variable for the base URL
     const data = await response.json()
     console.log(data);
     portfolios.value = data.portfolios
@@ -64,6 +64,7 @@ onMounted(async () => {
     console.error('Error fetching portfolios:', error)
   }
 })
+
 
 const pageTitle = 'Notre Portfolio'
 const pageDescription = "Parcourez notre portfolio pour voir des exemples de notre savoir-faire et des divers projets que nous avons réalisés. Laissez-vous inspirer par les transformations que nous avons accompli dans des maisons et des entreprises."
