@@ -22,6 +22,9 @@ export default defineNuxtConfig({
         strategy: 'prefix_except_default',
         lazy: true,
     },
+    plugins: [
+        '~/plugins/router.js' // Register the router plugin
+    ],
     server: {
         host: '159.203.52.35', // Default: localhost
         port: 3000, // Default: 3000
