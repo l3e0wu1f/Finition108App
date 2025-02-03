@@ -22,10 +22,8 @@ export default defineNuxtConfig({
         strategy: 'prefix_except_default',
         lazy: true,
     },
-    hooks: {
-        'vue-renderer:context': (context) => {
-          // Customize context as needed
-        }
+    env: {
+        API_BASE_URL: process.env.API_BASE_URL || 'http://localhost:3001',
     },
     extendRoutes(routes, resolve) {
         routes.push(
