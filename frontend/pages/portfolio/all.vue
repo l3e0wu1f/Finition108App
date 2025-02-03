@@ -50,7 +50,7 @@ const portfolio = ref({ descriptionfr: '', descriptionen: '' }) // Initialize th
 
 onMounted(async () => {
   try {
-    const response = await fetch('http://localhost:3001/api/portfolio/all') // Adjust the endpoint as needed
+    const response = await fetch(`${process.env.API_BASE_URL}/api/portfolio/all`) // Use environment variable for the base URL
     const data = await response.json()
     console.log(data);
     portfolios.value = data.portfolios
