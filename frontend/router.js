@@ -1,8 +1,8 @@
-// plugins/router.js
-import { defineNuxtPlugin } from '@nuxtjs/composition-api';
+// custom/router.js
+export default defineNuxtPlugin((nuxtApp) => {
+  const { vueApp } = nuxtApp;
 
-export default defineNuxtPlugin(({ app }) => {
-  app.router.addRoutes([
+  vueApp.router.addRoutes([
     {
       path: '/AboutUs',
       name: 'aboutus',
