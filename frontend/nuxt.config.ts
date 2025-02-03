@@ -23,7 +23,7 @@ export default defineNuxtConfig({
         lazy: true,
     },
     plugins: [
-        '~/plugins/router.js' // Register the router plugin
+        '~/router.js' // Register the router plugin
     ],
     server: {
         host: '159.203.52.35', // Default: localhost
