@@ -31,7 +31,7 @@
         </p>
         <div class="flex  justify-center items-center mx-4 gap-4 md:gap-[calc(100vw*0.1)] py-10 md:py-20">
           <a
-            href="/AboutUs')"
+            href="/AboutUs"
             class="primary-button w-40"
           >
             {{ locale === 'fr' ? 'Plus sur nous' : 'More about us' }}
