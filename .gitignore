@@ -4,3 +4,8 @@ node_modules/
 # Ignore package-lock.json
 package-lock.json
 
+# Ignore nginx directory
+nginx/
+
+# Ignore Dockerfile in root
+Dockerfile
