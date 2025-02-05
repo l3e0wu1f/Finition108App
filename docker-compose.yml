@@ -1,7 +1,7 @@
 # Production
 services:
   nginx:
-    build: ./nginx
+    build: .
     ports:
       - "80:80"
     volumes:
