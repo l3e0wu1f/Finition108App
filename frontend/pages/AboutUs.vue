@@ -85,7 +85,7 @@
             </p>
 
             <a
-              href="/portfolio/all')"
+              href="/portfolio/all"
               class="primary-button mt-6"
             >
               {{ locale === 'fr' ? 'Plus de projets' : 'See more projects' }}
