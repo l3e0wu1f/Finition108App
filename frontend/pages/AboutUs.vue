@@ -65,12 +65,12 @@
               {{ locale === 'en' ? "Don't hesitate to get in touch with us!" : "N'hésitez pas à nous contacter !" }}
             </p>
 
-            <nuxt-link
-              :to="localePath('contact')"
+            <a
+              href="/Contact"
               class="primary-button mt-6"
             >
               {{ locale === 'en' ? 'Contact us' : 'Contactez-nous' }}
-            </nuxt-link>
+            </a>
           </div>
         </div>
         <div class="h-px w-full bg-orange-950/10 mx-auto lg:hidden" />
@@ -84,12 +84,12 @@
               {{ locale === 'en' ? 'Explore our portfolio!' : "Découvrez notre portfolio !" }}
             </p>
 
-            <nuxt-link
-              :to="localePath('portfolio')"
+            <a
+              href="/portfolio/all')"
               class="primary-button mt-6"
             >
               {{ locale === 'fr' ? 'Plus de projets' : 'See more projects' }}
-            </nuxt-link>
+            </a>
           </div>
         </div>
       </div>
