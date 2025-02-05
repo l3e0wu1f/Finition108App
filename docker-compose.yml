@@ -1,5 +1,16 @@
 # Production
 services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./frontend:/usr/share/nginx/html
+    depends_on:
+      - frontend
+      - backend
+      
   backend:
     build:
       context: ./backend
