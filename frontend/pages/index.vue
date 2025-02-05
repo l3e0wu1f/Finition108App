@@ -20,12 +20,12 @@
           {{ locale === 'fr' ? "depuis plus de 20 ans." :'construction for over 20 years.' }}
         </h1>
 
-        <nuxt-link
-          :to="localePath('contact')"
+        <a
+          href="/Contact"
           class="w-60 lg:w-80 h-16 flex justify-center items-center rounded-2xl text-lg font-light text-center bg-primarybis/60 hover:primarybisary/80 text-secondary self-end mt-10"
         >
           {{ locale === 'fr' ? 'Contactez-nous' : 'Contact us' }}
-        </nuxt-link>
+        </a>
       </div>
     </div>
     <div class="bg-secondary z-10">
@@ -61,12 +61,12 @@
               : "We are a dedicated team of professionals committed to turning your construction dreams into reality. Learn more about our values, expertise, and how we consistently deliver high-quality results on every project."
             }}
           </p>
-          <nuxt-link
-            :to="localePath('aboutus')"
+          <a
+            href="/AboutUs"
             class="primary-button self-center lg:self-end"
           >
             {{ locale === 'fr' ? 'Plus sur nous' : 'More about us' }}
-          </nuxt-link>
+          </a>
         </div>
       </div>
       <div class="lg:h-[calc(100vw/2.5)] flex flex-col lg:flex-row items-center relative overflow-hidden justify-between">
@@ -92,12 +92,12 @@
               : "Looking to bring your construction project to life? With our wide range of services, from home renovations to custom designs, we are here to help you create the perfect space with expert craftsmanship and personalized solutions."
             }}
           </p>
-          <nuxt-link
-            :to="localePath('services')"
+          <a
+            href="/Services"
             class="primary-button self-center lg:self-start"
           >
             {{ locale === 'fr' ? 'En savoir plus sur nos services' : 'See more about services' }}
-          </nuxt-link>
+          </a>
         </div>
 
         <div class="lg:h-[calc((100vw/2.5)-8rem)] w-1/2 overflow-hidden hidden lg:block z-10 mr-16">
@@ -141,12 +141,12 @@
               : "Take a look at our portfolio to see how we've helped clients transform their homes and businesses. From unique residential renovations to stunning commercial spaces, our work reflects our passion for quality and attention to detail."
             }}
           </p>
-          <nuxt-link
-            :to="localePath('portfolio')"
+          <a
+            href="portfolio/all"
             class="primary-button self-center lg:self-end"
           >
             {{ locale === 'fr' ? 'Plus de projets' : 'See more projects' }}
-          </nuxt-link>
+          </a>
         </div>
       </div>
     </div>
