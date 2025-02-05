@@ -58,12 +58,6 @@ const listKeys = async (bucketName, prefix) => {
   }
 };
 
-console.log('Listing images from uploads:');
-listKeys('imagery', 'uploads/');
-console.log('Listing contents from bucket root:');
-listKeys('imagery', '');
-
-
 // Middleware for file uploads using multer-s3
 const upload = multer({
   storage: multerS3({
