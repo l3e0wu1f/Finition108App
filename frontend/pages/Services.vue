@@ -30,18 +30,18 @@
           }}
         </p>
         <div class="flex  justify-center items-center mx-4 gap-4 md:gap-[calc(100vw*0.1)] py-10 md:py-20">
-          <nuxt-link
-            :to="localePath('aboutus')"
+          <a
+            href="/AboutUs')"
             class="primary-button w-40"
           >
             {{ locale === 'fr' ? 'Plus sur nous' : 'More about us' }}
-          </nuxt-link>
-          <nuxt-link
-            :to="localePath('contact')"
+          </a>
+          <a
+            href="/Contact"
             class="primary-button w-40"
           >
             {{ locale === 'fr' ? 'Nous contacter' : 'Contact us' }}
-          </nuxt-link>
+          </a>
         </div>
       </div>
     </div>
@@ -399,12 +399,12 @@
         {{ locale === 'en' ? 'Discover our step-by-step process and see how we bring your vision to life.' : 'Découvrez notre processus étape par étape et voyez comment nous donnons vie à votre vision.' }}
       </p>
 
-      <nuxt-link
-        :to="localePath('process')"
+      <a
+        href="/Process"
         class="primary-button mt-6"
       >
         {{ locale === 'en' ? 'See our process' : 'Voir notre processus' }}
-      </nuxt-link>
+      </a>
     </div>
   </div>
 </template>
