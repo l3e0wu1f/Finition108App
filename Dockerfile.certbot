@@ -1,8 +1,12 @@
-# Start with the official Certbot image
+# Start with the official Certbot image (Alpine-based)
 FROM certbot/certbot:v3.1.0
 
-# Install NGINX and any dependencies
-RUN apt-get update && apt-get install -y nginx
+# Install NGINX and dependencies using apk (Alpine's package manager)
+RUN apk update && apk add --no-cache nginx python3 py3-pip \
+    && pip install certbot-nginx
 
-# Install the Certbot NGINX plugin
-RUN apt-get install -y python3-certbot-nginx
+# Create directories for NGINX and Certbot
+RUN mkdir -p /var/www/certbot /etc/letsencrypt
+
+# Expose NGINX and Certbot ports
+EXPOSE 80 443
