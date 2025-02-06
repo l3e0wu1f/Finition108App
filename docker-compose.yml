@@ -28,7 +28,7 @@ services:
     environment:
       - CERTBOT_EMAIL=youremail@example.com
       - CERTBOT_DOMAIN=finition108.io
-    entrypoint: "/bin/sh -c 'apt-get update && apt-get install -y nginx && certbot certonly --nginx'"
+    entrypoint: "/bin/sh -c 'certbot certonly --webroot -w /var/www/certbot -d finition108.io --dry-run"
     depends_on:
       - nginx
     networks:
