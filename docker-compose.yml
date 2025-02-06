@@ -1,38 +1,39 @@
-# Production
-services:
-    nginx:
-        build: .
-        ports:
-          - "80:80"
-          - "443:443"
-        volumes:
-          - ./frontend:/usr/share/nginx/html
-          - ./nginx.conf:/etc/nginx/nginx.conf:ro
-          - ./certbot/conf:/etc/letsencrypt:rw
-          - ./certbot/www:/var/www/certbot:rw
-        depends_on:
-          - certbot  # Ensure nginx waits for certbot to finish
-        networks:
-          - mynetwork
+version: '3.8'  # Specify the version of Docker Compose
 
-    certbot:
-        build:
-            context: .
-            dockerfile: Dockerfile.certbot
-        container_name: certbot
-        volumes:
-          - ./certbot/conf:/etc/letsencrypt:rw
-          - ./certbot/www:/var/www/certbot:rw
-          - ./nginx.conf:/etc/nginx/nginx.conf:ro
-        environment:
-          - CERTBOT_EMAIL=josh.b.lewis@outlook.com
-          - CERTBOT_DOMAIN=finition108.io
-        entrypoint: "/bin/sh -c 'certbot certonly --nginx -d finition108.io --config-dir /etc/letsencrypt --work-dir /tmp --logs-dir /tmp && touch /etc/letsencrypt/.certbot_done'"
-        depends_on:
-          - nginx
-        networks:
-          - mynetwork
-      
+services:
+  nginx:
+    build: .
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./certbot/conf:/etc/letsencrypt:rw  # Ensure certs can be mounted
+      - ./certbot/www:/var/www/certbot:rw  # This folder is for the ACME challenge
+    depends_on:
+      - certbot
+    networks:
+      - mynetwork
+
+  certbot:
+    build:
+      context: .
+      dockerfile: Dockerfile.certbot  # Ensure you're using a custom certbot Dockerfile
+    container_name: certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt:rw
+      - ./certbot/www:/var/www/certbot:rw
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro  # Make NGINX config available to Certbot
+    environment:
+      - CERTBOT_EMAIL=josh.b.lewis@outlook.com
+      - CERTBOT_DOMAIN=finition108.io
+    entrypoint: "/bin/sh -c 'certbot certonly --nginx -d finition108.io --config-dir /etc/letsencrypt --work-dir /tmp --logs-dir /tmp'"
+    depends_on:
+      - nginx
+    networks:
+      - mynetwork
+
   backend:
     build:
       context: ./backend
