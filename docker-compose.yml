@@ -19,7 +19,7 @@ services:
   certbot:
     build:
       context: .
-      dockerfile: Dockerfile.certbot  # Ensure you're using a custom certbot Dockerfile
+      dockerfile: Dockerfile.certbot
     container_name: certbot
     volumes:
       - ./certbot/conf:/etc/letsencrypt:rw
@@ -30,7 +30,7 @@ services:
       - CERTBOT_DOMAIN=finition108.io
     entrypoint: "/bin/sh -c 'certbot certonly --nginx -d finition108.io --config-dir /etc/letsencrypt --work-dir /tmp --logs-dir /tmp'"
     depends_on:
-      - nginx  # Ensure nginx is up before running certbot
+      - nginx
     networks:
       - mynetwork
 
