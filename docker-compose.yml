@@ -17,9 +17,18 @@ services:
       - mynetwork
   certbot:
     image: certbot/certbot
+    container_name: certbot
     volumes:
-      - ./certbot/www:/var/www/certbot:rw
       - ./certbot/conf:/etc/letsencrypt:rw
+      - ./certbot/www:/var/www/certbot:rw
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro  # Ensure NGINX conf is available to Certbot
+      - /var/lib/docker/volumes/app_mynetwork_nginx-etc-certificate/_data:/etc/letsencrypt:ro
+    environment:
+      - CERTBOT_EMAIL=youremail@example.com
+      - CERTBOT_DOMAIN=finition108.io
+    entrypoint: "/bin/sh -c 'apt-get update && apt-get install -y nginx && certbot certonly --nginx'"
+    depends_on:
+      - nginx
     networks:
       - mynetwork
       
