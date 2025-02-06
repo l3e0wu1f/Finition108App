@@ -26,9 +26,9 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro  # Ensure NGINX conf is available to Certbot
       - /var/lib/docker/volumes/app_mynetwork_nginx-etc-certificate/_data:/etc/letsencrypt:ro
     environment:
-      - CERTBOT_EMAIL=youremail@example.com
+      - CERTBOT_EMAIL=josh.b.lewis@outlook.com
       - CERTBOT_DOMAIN=finition108.io
-    entrypoint: "/bin/sh -c 'certbot certonly --webroot -w /var/www/certbot -d finition108.io --dry-run'"
+    entrypoint: "/bin/sh -c 'certbot certonly --nginx -d finition108.io --config-dir /etc/letsencrypt --work-dir /tmp --logs-dir /tmp'"
     depends_on:
       - nginx
     networks:
