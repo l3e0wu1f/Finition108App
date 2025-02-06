@@ -16,7 +16,9 @@ services:
     networks:
       - mynetwork
   certbot:
-    image: certbot/certbot
+    build:
+        context: .
+        dockerfile: Dockerfile.certbot  # This is your custom Dockerfile for Certbot
     container_name: certbot
     volumes:
       - ./certbot/conf:/etc/letsencrypt:rw
