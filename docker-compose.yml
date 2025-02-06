@@ -8,8 +8,8 @@ services:
     volumes:
       - ./frontend:/usr/share/nginx/html
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./certbot/conf:/etc/letsencrypt:rw  # Make sure certs are mounted here
-      - ./certbot/www:/var/www/certbot:rw
+      - ./certbot/conf:/etc/letsencrypt:rw  # Mount certbot conf dir
+      - ./certbot/www:/var/www/certbot:rw  # Mount certbot challenge dir
     depends_on:
       - frontend
       - backend
@@ -22,8 +22,8 @@ services:
         dockerfile: Dockerfile.certbot  # This is your custom Dockerfile for Certbot
     container_name: certbot
     volumes:
-      - ./certbot/conf:/etc/letsencrypt:rw
-      - ./certbot/www:/var/www/certbot:rw
+      - ./certbot/conf:/etc/letsencrypt:rw  # Mount certbot conf dir
+      - ./certbot/www:/var/www/certbot:rw  # Mount certbot challenge dir
       - ./nginx.conf:/etc/nginx/nginx.conf:ro  # Ensure NGINX conf is available to Certbot
     environment:
       - CERTBOT_EMAIL=josh.b.lewis@outlook.com
