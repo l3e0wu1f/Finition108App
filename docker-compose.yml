@@ -12,6 +12,8 @@ services:
     depends_on:
       - frontend
       - backend
+    networks:
+      - mynetwork
   certbot:
     image: certbot/certbot
     volumes:
