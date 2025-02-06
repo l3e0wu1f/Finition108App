@@ -1,6 +1,9 @@
 # Start with the official Certbot image (Alpine-based)
 FROM certbot/certbot:v3.1.0
 
+# Ensure certbot runs as root
+USER root
+
 # Install NGINX and dependencies using apk (Alpine's package manager)
 RUN apk update && apk add --no-cache nginx python3 py3-pip \
     && pip install certbot-nginx
