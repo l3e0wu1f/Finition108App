@@ -1,5 +1,3 @@
-version: '3.8'  # Specify the version of Docker Compose
-
 services:
   nginx:
     build: .
@@ -9,12 +7,14 @@ services:
     volumes:
       - ./frontend:/usr/share/nginx/html
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./certbot/conf:/etc/letsencrypt:rw  # Ensure certs can be mounted
-      - ./certbot/www:/var/www/certbot:rw  # This folder is for the ACME challenge
+      - ./certbot/conf:/etc/letsencrypt:rw
+      - ./certbot/www:/var/www/certbot:rw
     depends_on:
-      - certbot
+      - frontend
+      - backend
     networks:
       - mynetwork
+    entrypoint: /bin/bash -c "while ! test -f /etc/letsencrypt/live/finition108.io/fullchain.pem; do echo 'Waiting for Certbot to generate SSL certificates...'; sleep 5; done; nginx -g 'daemon off;'"
 
   certbot:
     build:
@@ -24,13 +24,13 @@ services:
     volumes:
       - ./certbot/conf:/etc/letsencrypt:rw
       - ./certbot/www:/var/www/certbot:rw
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro  # Make NGINX config available to Certbot
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
     environment:
       - CERTBOT_EMAIL=josh.b.lewis@outlook.com
       - CERTBOT_DOMAIN=finition108.io
     entrypoint: "/bin/sh -c 'certbot certonly --nginx -d finition108.io --config-dir /etc/letsencrypt --work-dir /tmp --logs-dir /tmp'"
     depends_on:
-      - nginx
+      - nginx  # Ensure nginx is up before running certbot
     networks:
       - mynetwork
 
