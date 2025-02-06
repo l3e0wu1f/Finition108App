@@ -1,0 +1,8 @@
+# Start with the official Certbot image
+FROM certbot/certbot:v3.1.0
+
+# Install NGINX and any dependencies
+RUN apt-get update && apt-get install -y nginx
+
+# Install the Certbot NGINX plugin
+RUN apt-get install -y python3-certbot-nginx
