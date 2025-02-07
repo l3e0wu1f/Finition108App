@@ -34,5 +34,7 @@ COPY . .
 # Expose the frontend service port
 EXPOSE 3000
 
+RUN npm run build
+
 # Start the application using the start script defined in package.json
-CMD ["npm", "run", "build"]
+CMD ["npm", "run", "start"]
