@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:18
 
 ENV npm_config_platform=linux
 ENV NODE_ENV=production
