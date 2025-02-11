@@ -60,12 +60,10 @@ services:
       - API_BASE_URL=http://backend:3001
     ports:
       - "3000:3000"
-    # command: /bin/sh -c "node .output/server/index.mjs"  
     networks:
       - mynetwork
     volumes:
-      - ./frontend:/app
-      - /app/node_modules
+      - ./frontend/node_modules:/app/node_modules
     restart: always
 
 networks:
