@@ -20,7 +20,7 @@ RUN rm -rf node_modules package-lock.json
 
 # Install npm and dependencies
 RUN npm install -g npm@6
-RUN npm install
+RUN npm install --max-old-space-size=4096
 
 # Copy the rest of the application code to the working directory
 COPY . .
