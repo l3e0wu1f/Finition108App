@@ -20,8 +20,6 @@
     "@nuxtjs/i18n": "^9.0.0-rc.2",
     "@nuxtjs/seo": "^2.0.2",
     "nuxt": "^3.13.0",
-    "@nuxt/kit": "latest",
-    "@nuxt/bridge": "latest",
     "rollup": "2.x",
     "sharp": "^0.33.5",
     "vue": "latest",
