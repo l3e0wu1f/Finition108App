@@ -1,4 +1,4 @@
-FROM node:18 AS build
+FROM node:18
 
 ENV npm_config_platform=linux
 ENV NODE_ENV=production
@@ -27,16 +27,8 @@ COPY . .
 
 RUN npx nuxi build
 
-# Step 2: Production image (only serving the built app)
-FROM node:18 AS production
-
-WORKDIR /app
-
-# Copy the built application from the previous build stage
-COPY --from=build /app /app
-
 # Ensure .output is available
-# COPY .output /app/.output
+COPY .output /app/.output
 
 # Expose the frontend service port
 EXPOSE 3000
