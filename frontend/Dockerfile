@@ -28,7 +28,7 @@ COPY . .
 RUN npx nuxi build
 
 # Ensure .output is available
-# COPY .output /app/.output
+COPY .output /app/.output
 
 # Expose the frontend service port
 EXPOSE 3000
