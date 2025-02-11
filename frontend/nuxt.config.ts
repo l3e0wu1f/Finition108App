@@ -3,8 +3,8 @@ export default defineNuxtConfig({
     nitro: {
       preset: 'node-server',
       output: {
-        dir: '/app/.output',
-        publicDir: '/app/.output/public', // You might also need to define a public directory path
+        dir: 'app/.output',
+        publicDir: 'app/.output/public', // You might also need to define a public directory path
       },
     },
     site: {
