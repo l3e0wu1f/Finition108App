@@ -1,12 +1,12 @@
 <!-- eslint-disable no-irregular-whitespace -->
 <template>
   <div>
-    <div class="h-[calc(100vh-5rem)] w-screen overflow-hidden z-0 relative">
+    <div class="h-[calc(100vh-35rem)] md:h-[calc(100vh-5rem)] w-screen overflow-hidden z-0 relative">
       <div
-        class="bg-fixed bg-cover bg-center h-full w-full absolute"
+        class="bg-fixed bg-contain md:bg-cover md:bg-center h-full w-full absolute"
         style="background-image: url('https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/backdrop.jpg');"
       />
-      <div class="flex flex-col justify-center p-4 lg:p-14 z-5 absolute lg:h-[25rem] bottom-0 right-0">
+      <div class="flex flex-col justify-center p-4 lg:p-14 z-5 absolute lg:h-[25rem] md:bottom-0 right-0">
         <h1
           class="text-2xl md:text-3xl lg:text-5xl text-secondary font-medium text-right p-1"
           style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);"
