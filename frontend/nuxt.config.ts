@@ -3,7 +3,10 @@ export default defineNuxtConfig({
     buildDir: '.output',
     nitro: {
       preset: 'node-server',
-      output: '/app/.output',
+      output: {
+        dir: '/app/.output',
+        publicDir: '/app/.output/public', // You might also need to define a public directory path
+      },
     },
     site: {
         url: 'https://finition108.io',
