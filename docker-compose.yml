@@ -62,7 +62,7 @@ services:
       - "3000:3000"
     networks:
       - mynetwork
-    command: /bin/sh -c "npx nuxi build && node .output/server/index.mjs"
+    command: /bin/sh -c "node .output/server/index.mjs"
     volumes:
       - ./frontend/node_modules:/app/node_modules
     restart: always
