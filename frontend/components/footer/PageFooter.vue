@@ -181,7 +181,7 @@
           (514)652-0712
         </a>
       </div>
-      <a
+      <!-- <a
         href="https://www.google.com/maps/search/?api=1&query=5674+Rue+Sherbrooke+Ouest,+Montreal,+Canada"
         target="_blank"
         rel="noopener noreferrer"
@@ -190,7 +190,7 @@
         <p>5674 Rue Sherbrooke</p>
         <p>Ouest, Montreal, QC,</p>
         <p>Canada</p>
-      </a>
+      </a> -->
     </div>
   </div>
 </template>
