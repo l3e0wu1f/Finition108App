@@ -40,10 +40,6 @@ services:
       - "3001:3001"
     networks:
       - mynetwork
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
-      interval: 30s
-      retries: 3
     volumes:
       - ./backend:/app
       - /app/node_modules
