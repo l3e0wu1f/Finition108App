@@ -22,19 +22,13 @@ RUN rm -rf node_modules package-lock.json
 RUN npm install -g npm@6
 RUN npm install
 
-# Install necessary global Nuxt modules
-# RUN npm install -g nuxt @nuxt/kit @nuxt/bridge typescript
-
-# Install other necessary dev dependencies
-# RUN npm i -D @iconify-json/lineicons
-
 # Copy the rest of the application code to the working directory
 COPY . .
 
+RUN npm run build
+
 # Expose the frontend service port
 EXPOSE 3000
-
-RUN npm run build
 
 # Start the application using the start script defined in package.json
 CMD ["npm", "run", "start"]
