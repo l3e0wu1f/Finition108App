@@ -34,4 +34,5 @@ COPY .output /app/.output
 EXPOSE 3000
 
 # Start the application using the start script defined in package.json
-CMD ["npm", "run", "start"]
+CMD ["node", ".output/server/index.mjs"]
+# CMD ["npm", "run", "start"]
