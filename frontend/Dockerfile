@@ -25,14 +25,14 @@ RUN npm install --max-old-space-size=4096
 # Copy the rest of the application code to the working directory
 COPY . .
 
-RUN npx nuxi build
+# RUN npx nuxi build
 
 # Ensure .output is available
-COPY .output /app/.output
+# COPY .output /app/.output
 
 # Expose the frontend service port
 EXPOSE 3000
 
 # Start the application using docker-compose command
-CMD ["node", ".output/server/index.mjs"]
+# CMD ["node", ".output/server/index.mjs"]
 # CMD ["npm", "run", "start"]
