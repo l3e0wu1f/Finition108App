@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    buildDir: '.output',
     nitro: {
       preset: 'node-server',
       output: '/app/.output',
