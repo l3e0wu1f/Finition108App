@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
     nitro: {
       preset: 'node-server',
+      output: '/app/.output',
     },
     site: {
         url: 'https://finition108.io',
