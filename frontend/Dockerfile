@@ -25,8 +25,7 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
-RUN nuxi build
-RUN npm run build
+RUN npx nuxi build
 
 # Expose the frontend service port
 EXPOSE 3000
