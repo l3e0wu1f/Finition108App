@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
   python3
 
 # Copy the rest of the source code
-RUN npm ci
+RUN npm install
 COPY . .
 
 # Build Nuxt3 app
