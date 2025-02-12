@@ -31,6 +31,7 @@ const getFilesFromS3Directory = async (dir) => {
 
   try {
     const data = await s3.listObjectsV2(params).promise();
+    console.log("S3 files:", data);  // Log to check if files are being fetched
     return data.Contents.map(obj => obj.Key.replace(`uploads/`, ''));
   } catch (error) {
     console.error(`Error listing objects in S3 directory: uploads/`, error);
@@ -83,7 +84,7 @@ exports.getPortfolioById = async (req, res) => {
     const portfolio = portfolios.find(p => p.filepath === id);
 
     if (portfolio) {
-      const images = await getFilesFromS3Directory(portfolio.filepath);
+      const images = await getFilesFromS3Directory(`uploads/${portfolio.filepath}/`);
       const imageUrls = images.map(image => `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${portfolio.filepath}/${image}`);
       // Include all images in the directory
       res.status(200).json({ 
