@@ -9,18 +9,18 @@ WORKDIR /app
 # Build
 FROM base as build
 
-COPY --link package.json package-lock.json .
 RUN npm install
 
-COPY --link . .
+COPY . .
 
-RUN npm run build
+RUN npx nuxi build
 
 # Run
 FROM base
 
 ENV PORT=$PORT
 ENV NODE_ENV=production
+ENV npm_config_platform=linux
 
 COPY --from=build /app/.output /app/.output
 # Optional, only needed if you rely on unbundled dependencies
