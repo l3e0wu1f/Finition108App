@@ -1,15 +1,10 @@
-ARG NODE_VERSION=18
-
-FROM node:${NODE_VERSION}-slim as base
-
-ARG PORT=3000
+# Stage 1: Build
+FROM node:18-alpine AS builder
 
 WORKDIR /app
 
+# Copy package files and install dependencies
 COPY package*.json ./
-
-# Build
-FROM base as build
 
 # Clean npm cache and install necessary build tools
 RUN npm cache clean --force
@@ -18,30 +13,32 @@ RUN apt-get update && apt-get install -y \
   libvips-dev \
   python3
 
+# Copy the rest of the source code
 RUN npm install -g npm@6
 RUN npm install --max-old-space-size=4096
-
 COPY . .
 
+# Build Nuxt3 app
 RUN npx nuxi build
 
-# Run
-FROM base
+# Stage 2: Production
+FROM node:18-alpine
 
-ENV PORT=$PORT
-ENV NODE_ENV=production
-ENV npm_config_platform=linux
+WORKDIR /app
 
-COPY --from=build /app/.output /app/.output
-# Optional, only needed if you rely on unbundled dependencies
-COPY --from=build /app/node_modules /app/node_modules
+# Copy only the necessary files from the builder stage
+COPY --from=builder /app/.output ./.output
+
+# Install only production dependencies if needed
+COPY package*.json ./
+RUN npm install --only=production
 
 # Expose the frontend service port
 EXPOSE 3000
 
-#CMD [ "node", ".output/server/index.mjs" ]
+CMD [ "node", ".output/server/index.mjs" ]
 # ENTRYPOINT ["node", ".output/server/index.mjs"]
-CMD ["npm", "run", "start"]
+# CMD ["npm", "run", "start"]
 
 # FROM node:18
 
