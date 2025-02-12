@@ -9,6 +9,13 @@ WORKDIR /app
 # Build
 FROM base as build
 
+# Clean npm cache and install necessary build tools
+RUN npm cache clean --force
+RUN apt-get update && apt-get install -y \
+  build-essential \
+  libvips-dev \
+  python3
+
 RUN npm install
 
 COPY . .
