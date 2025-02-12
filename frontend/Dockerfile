@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
   libvips-dev \
   python3
 
-RUN npm install
+RUN npm install -g npm@6
 
 COPY . .
 
