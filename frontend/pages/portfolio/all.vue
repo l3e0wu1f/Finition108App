@@ -54,13 +54,7 @@ onMounted(async () => {
     const data = await response.json()
     console.log(data);
     portfolios.value = data.portfolios
-
-    // Try to parse the response as JSON
-    const dat = JSON.parse(response);
-    console.log(dat);
-    portfolios.value = dat.portfolios;
     
-    // Assume the first portfolio's description for now
     if (data.portfolios.length > 0) {
       portfolio.value = data.portfolios[0]
     }
@@ -69,6 +63,7 @@ onMounted(async () => {
     console.error('Error fetching portfolios:', error)
   }
 })
+
 
 
 const pageTitle = 'Notre Portfolio'
