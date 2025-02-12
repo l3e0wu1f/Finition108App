@@ -34,7 +34,7 @@ COPY --from=builder /app/.output ./.output
 
 # Install only production dependencies if needed
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm install --only=production
 
 # Expose the frontend service port
 EXPOSE 3000
