@@ -25,7 +25,7 @@ RUN ls -la .output
 RUN ls -la .output/server
 
 # Stage 2: Production
-FROM node:18-slim
+FROM node:18-slim AS production
 
 WORKDIR /app
 
