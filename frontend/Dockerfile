@@ -6,6 +6,8 @@ ARG PORT=3000
 
 WORKDIR /app
 
+COPY package*.json ./
+
 # Build
 FROM base as build
 
