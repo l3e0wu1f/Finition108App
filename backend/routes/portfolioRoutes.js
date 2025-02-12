@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 const router = express.Router();
@@ -6,7 +7,7 @@ const AWS = require('aws-sdk');
 const { getAllPortfolios, getPortfolioById, updatePortfolio, createPortfolio, deletePortfolio } = require('../controllers/portfolioController');
 
 // Configure the S3 client
-const spacesEndpoint = new AWS.Endpoint('https://tor1.digitaloceanspaces.com');
+const spacesEndpoint = new AWS.Endpoint('tor1.digitaloceanspaces.com');
 
 const s3 = new AWS.S3({
   endpoint: spacesEndpoint,
