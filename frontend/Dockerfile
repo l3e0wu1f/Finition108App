@@ -20,7 +20,7 @@ RUN npm install -g npm@6
 
 COPY . .
 
-RUN npx nuxi build
+RUN npm run build
 
 # Run
 FROM base
