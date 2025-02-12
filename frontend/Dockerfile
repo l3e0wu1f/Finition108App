@@ -35,5 +35,5 @@ RUN npx nuxi build
 EXPOSE 3000
 
 # Start the application using docker-compose command
-# CMD ["node", ".output/server/index.mjs"]
-CMD ["npm", "run", "start"]
+ENTRYPOINT ["node", ".output/server/index.mjs"]
+# CMD ["npm", "run", "start"]
