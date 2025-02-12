@@ -41,7 +41,7 @@ services:
     networks:
       - mynetwork
     volumes:
-      - ./backend/node_modules:/app/node_modules
+      - ./backend:/app
     environment:
       - PORT=3001
       - NODE_ENV=production
