@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y \
   python3
 
 RUN npm install -g npm@6
+RUN npm install --max-old-space-size=4096
 
 COPY . .
 
