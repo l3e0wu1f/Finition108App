@@ -4,7 +4,7 @@
     <div class="h-[calc(100vh-35rem)] md:h-[calc(100vh-5rem)] w-screen overflow-hidden z-0 relative">
       <div
         class="bg-fixed bg-contain md:bg-cover md:bg-center h-full w-full absolute"
-        style="background-image: url('https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/backdrop.jpg');"
+        style="background-image: url('https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/backdrop.jpg'); background-repeat: no-repeat;"
       />
       <div class="flex flex-col justify-center p-4 lg:p-14 z-5 absolute lg:h-[25rem] md:bottom-0 right-0">
         <h1
