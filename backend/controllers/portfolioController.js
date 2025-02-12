@@ -83,10 +83,19 @@ exports.getPortfolioById = async (req, res) => {
     const portfolios = JSON.parse(fs.readFileSync(portfolioFilePath, 'utf-8'));
     const portfolio = portfolios.find(p => p.filepath === id);
 
+    // if (portfolio) {
+    //   const images = await getFilesFromS3Directory(`uploads/${portfolio.filepath}/`);
+    //   const imageUrls = images.map(image => `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${portfolio.filepath}/${image}`);
+    //   // Include all images in the directory
+    //   res.status(200).json({ 
+    //     portfolio,
+    //     images: imageUrls 
+    //   });
+    // } 
     if (portfolio) {
       const images = await getFilesFromS3Directory(`uploads/${portfolio.filepath}/`);
-      const imageUrls = images.map(image => `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${portfolio.filepath}/${image}`);
-      // Include all images in the directory
+      const imageUrls = images.map(image => `https://imagery.tor1.cdn.digitaloceanspaces.com/${image}`);
+      // Send the response with images array
       res.status(200).json({ 
         portfolio,
         images: imageUrls 
