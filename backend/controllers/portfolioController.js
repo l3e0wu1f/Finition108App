@@ -16,7 +16,8 @@ const s3 = new AWS.S3({
 });
 
 // Path to the portfolio.json file
-const portfolioFilePath = path.join(LOCAL_PATH, 'utils/portfolioList.json');
+const portfolioFilePath = path.join(__dirname, '../utils/portfolioList.json');
+// const portfolioFilePath = path.join(LOCAL_PATH, 'utils/portfolioList.json');
 
 // CDN upload path
 const uploadsPath = 'https://imagery.tor1.cdn.digitaloceanspaces.com/uploads';
@@ -25,7 +26,7 @@ const uploadsPath = 'https://imagery.tor1.cdn.digitaloceanspaces.com/uploads';
 const getFilesFromS3Directory = async (dir) => {
   const params = {
     Bucket: 'imagery',
-    Prefix: `uploads/`, // Prefix to list objects within the directory
+    Prefix: `${dir}`, // Prefix to list objects within the directory
   };
 
   try {
@@ -35,6 +36,7 @@ const getFilesFromS3Directory = async (dir) => {
     console.error(`Error listing objects in S3 directory: uploads/`, error);
     return [];
   }
+  return data.Contents.map(obj => obj.Key);
 };
 
 const dir = 'uploads/'; // Define the directory you want to list
@@ -51,18 +53,18 @@ exports.getAllPortfolios = async (req, res) => {
     console.log('Portfolios fetched:', portfolios);
 
     const portfoliosWithImages = await Promise.all(portfolios.map(async (portfolio) => {
-      const primaryImgs = await getFilesFromS3Directory(`${portfolio.filepath}/cover/primary`);
-      const hoverImgs = await getFilesFromS3Directory(`${portfolio.filepath}/cover/hover`);
+    const primaryImgs = await getFilesFromS3Directory(`uploads/${portfolio.filepath}/cover/primary/`);
+    const hoverImgs = await getFilesFromS3Directory(`uploads/${portfolio.filepath}/cover/hover/`);
+    const primaryUrl = primaryImgs.length > 0 ? `${uploadsPath}/${primaryImgs[0]}` : null;
+    // const primaryUrl = primaryImgs.length > 0 ? `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${portfolio.filepath}/cover/primary/${primaryImgs[0]}` : null;
+    const hoverUrl = hoverImgs.length > 0 ? `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${portfolio.filepath}/cover/hover/${hoverImgs[0]}` : null;
 
-      const primaryUrl = primaryImgs.length > 0 ? `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${portfolio.filepath}/cover/primary/${primaryImgs[0]}` : null;
-      const hoverUrl = hoverImgs.length > 0 ? `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${portfolio.filepath}/cover/hover/${hoverImgs[0]}` : null;
-
-      return { 
-        ...portfolio, 
-        primary: primaryUrl,
-        hover: hoverUrl
-      };
-    }));
+    return { 
+      ...portfolio, 
+      primary: primaryUrl,
+      hover: hoverUrl
+    };
+  }));
 
     res.status(200).json({ portfolios: portfoliosWithImages });
   } catch (error) {
