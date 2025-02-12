@@ -32,15 +32,16 @@ ENV PORT=$PORT
 ENV NODE_ENV=production
 ENV npm_config_platform=linux
 
-COPY --from=build /app/.output /app/.output
+COPY --from=build .output /app/.output
 # Optional, only needed if you rely on unbundled dependencies
-COPY --from=build /app/node_modules /app/node_modules
+COPY --from=build node_modules /app/node_modules
 
 # Expose the frontend service port
 EXPOSE 3000
 
 #CMD [ "node", ".output/server/index.mjs" ]
-ENTRYPOINT ["node", ".output/server/index.mjs"]
+# ENTRYPOINT ["node", ".output/server/index.mjs"]
+CMD ["npm", "run", "start"]
 
 # FROM node:18
 
