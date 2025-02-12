@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:18-alpine
 
 WORKDIR /app
 
@@ -8,7 +8,7 @@ ENV NODE_ENV=production
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm install --only=production
 RUN npm install multer-s3
 
 # Install nodemon globally
