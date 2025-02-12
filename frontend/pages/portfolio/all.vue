@@ -52,7 +52,7 @@ onMounted(async () => {
   try {
     const response = await fetch(`/api/portfolio/all`) // Use environment variable for the base URL
     const data = await response.json()
-    console.log(data);
+    // console.log(data);
     portfolios.value = data.portfolios
     
     if (data.portfolios.length > 0) {
