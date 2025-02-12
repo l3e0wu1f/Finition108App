@@ -1,39 +1,72 @@
-FROM node:18
+ARG NODE_VERSION=20.18.0
 
-ENV npm_config_platform=linux
-ENV NODE_ENV=production
+FROM node:${NODE_VERSION}-slim as base
+
+ARG PORT=3000
 
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+# Build
+FROM base as build
 
-# Clean npm cache and install necessary build tools
-RUN npm cache clean --force
-RUN apt-get update && apt-get install -y \
-  build-essential \
-  libvips-dev \
-  python3
+COPY --link package.json package-lock.json .
+RUN npm install
 
-# Remove existing node_modules and package-lock.json if present
-RUN rm -rf node_modules package-lock.json
+COPY --link . .
 
-# Install npm and dependencies
-RUN npm install -g npm@6
-RUN npm install --max-old-space-size=4096
+RUN npm run build
 
-# Copy the rest of the application code to the working directory
-COPY . .
+# Run
+FROM base
 
-RUN npx nuxi build
+ENV PORT=$PORT
+ENV NODE_ENV=production
 
-
-# Ensure .output is available
-# COPY .output /app/.output
+COPY --from=build /app/.output /app/.output
+# Optional, only needed if you rely on unbundled dependencies
+COPY --from=build /app/node_modules /app/node_modules
 
 # Expose the frontend service port
 EXPOSE 3000
 
-# Start the application using docker-compose command
+#CMD [ "node", ".output/server/index.mjs" ]
 ENTRYPOINT ["node", ".output/server/index.mjs"]
+
+# FROM node:18
+
+# ENV npm_config_platform=linux
+# ENV NODE_ENV=production
+
+# WORKDIR /app
+
+# # Copy package.json and package-lock.json to the working directory
+# COPY package*.json ./
+
+# # Clean npm cache and install necessary build tools
+# RUN npm cache clean --force
+# RUN apt-get update && apt-get install -y \
+#   build-essential \
+#   libvips-dev \
+#   python3
+
+# # Remove existing node_modules and package-lock.json if present
+# RUN rm -rf node_modules package-lock.json
+
+# # Install npm and dependencies
+# RUN npm install -g npm@6
+# RUN npm install --max-old-space-size=4096
+
+# # Copy the rest of the application code to the working directory
+# COPY . .
+
+# RUN npx nuxi build
+
+
+# # Ensure .output is available
+# # COPY .output /app/.output
+
+# Expose the frontend service port
+# EXPOSE 3000
+
+# Start the application using docker-compose command
 # CMD ["npm", "run", "start"]
