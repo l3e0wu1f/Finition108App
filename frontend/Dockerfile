@@ -22,7 +22,7 @@ COPY . .
 RUN npx nuxi build
 
 # Stage 2: Production
-FROM node:18-alpine
+FROM node:18-slim
 
 WORKDIR /app
 
