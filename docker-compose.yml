@@ -52,6 +52,8 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      # Only enable target once initial build stage is cached in production env
+      target: production
     environment:
       - NODE_ENV=production
       - npm_config_platform=linux
