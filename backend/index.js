@@ -11,7 +11,7 @@ const AWS = require('aws-sdk');
 
 // Enable CORS for all routes
 app.use(cors({
-  origin: '*', // Allow requests from any origin
+  origin: 'https://finition108.io',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true // Allow cookies to be sent with requests
@@ -123,8 +123,9 @@ app.use((err, req, res, next) => {
 
 // Start the server
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
 
 
