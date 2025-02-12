@@ -1,5 +1,5 @@
 # Stage 1: Build
-FROM node:18-slim AS builder
+FROM node:18 AS builder
 
 WORKDIR /app
 
@@ -14,12 +14,15 @@ RUN apt-get update && apt-get install -y \
   python3
 
 # Copy the rest of the source code
-RUN npm install -g npm@6
-RUN npm install --max-old-space-size=4096
+RUN npm ci
 COPY . .
 
 # Build Nuxt3 app
 RUN npx nuxi build
+
+# List the contents of .output to verify build success
+RUN ls -la .output
+RUN ls -la .output/server
 
 # Stage 2: Production
 FROM node:18-slim
@@ -31,7 +34,7 @@ COPY --from=builder /app/.output ./.output
 
 # Install only production dependencies if needed
 COPY package*.json ./
-RUN npm install --only=production
+RUN npm ci --only=production
 
 # Expose the frontend service port
 EXPOSE 3000
