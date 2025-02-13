@@ -2,17 +2,17 @@ const nodemailer = require('nodemailer');
 
 // Créez un transporteur de messagerie
 const transporter = nodemailer.createTransport({
-  service: 'yahoo',
+  service: 'microsoft',
   auth: {
-    user: 'laurine996@gmail.com',
-    pass: 'xlwwjaikatvaqrlg'
+    user: 'admin@finition108.io',
+    pass: 'Cuddles$108'
   }
 });
 
 const sendEmail = (subject, text) => {
   const mailOptions = {
-    from: 'laurine_vlt@yahoo.fr',
-    to: 'laurine.valat@outlook.com',
+    from: 'admin@finition108.io',
+    to: 'admin@finition108.io',
     subject: subject,
     text: text
   };
