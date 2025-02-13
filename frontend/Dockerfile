@@ -23,11 +23,11 @@ COPY . .
 RUN npx nuxi build
 
 # Copy the node_modules from the base image (this is already installed and cached)
-COPY /app/node_modules ./node_modules
+# COPY /app/node_modules ./node_modules
 
 # Copy the built application from the base image
-COPY /app/.nuxt ./.nuxt
-COPY /app/.output ./.output
+# COPY /app/.nuxt ./.nuxt
+# COPY /app/.output ./.output
 
 # Expose the frontend service port
 EXPOSE 3000
