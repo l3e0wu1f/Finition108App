@@ -9,13 +9,13 @@ COPY package*.json ./
 # Clean npm cache and install necessary build tools
 # RUN npm cache clean --force
 RUN apt-get update && apt-get install -y \
+  git \
   build-essential \
   libvips-dev \
   python3
 
 # Copy the rest of the source code
 RUN npm install
-RUN npm install @iconify/vue @heroicons/vue
 
 COPY . .
 
