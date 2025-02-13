@@ -3,30 +3,30 @@
   <div>
     <div class="h-[300px] sm:h-[calc(100vh-5rem)] w-screen overflow-hidden z-0 relative">
       <div
-        class="bg-fixed bg-contain object-contain sm:bg-cover sm:object-cover sm:bg-center h-full w-full absolute"
+        class="sm:bg-fixed bg-contain object-contain sm:bg-cover sm:object-cover sm:bg-center h-full w-full absolute"
         style="background-image: url('https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/backdrop.jpg'); background-repeat: no-repeat;"
       />
-      <div class="flex flex-col justify-center p-4 lg:p-14 z-5 absolute lg:h-[25rem] md:bottom-0 right-0">
-        <h1
-          class="text-lg sm:text-2xl md:text-3xl lg:text-5xl text-secondary font-medium text-right p-1"
-          style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);"
-        >
-          {{ locale === 'fr' ? "Finition 108 : Maîtriser l'art de la construction" :'Finition 108: Mastering the art of' }}
-        </h1>
-        <h1
-          class="text-lg sm:text-2xl md:text-3xl lg:text-5xl text-secondary font-medium text-right p-1"
-          style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);"
-        >
-          {{ locale === 'fr' ? "depuis plus de 20 ans." :'construction for over 20 years.' }}
-        </h1>
+    </div>
+    <div class="flex flex-col justify-center p-4 lg:p-14 z-5 absolute lg:h-[25rem] md:bottom-0 right-0">
+      <h1
+        class="text-lg sm:text-2xl md:text-3xl lg:text-5xl text-secondary font-medium text-right p-1"
+        style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);"
+      >
+        {{ locale === 'fr' ? "Finition 108 : Maîtriser l'art de la construction" :'Finition 108: Mastering the art of' }}
+      </h1>
+      <h1
+        class="text-lg sm:text-2xl md:text-3xl lg:text-5xl text-secondary font-medium text-right p-1"
+        style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);"
+      >
+        {{ locale === 'fr' ? "depuis plus de 20 ans." :'construction for over 20 years.' }}
+      </h1>
 
-        <a
-          href="/Contact"
-          class="w-60 lg:w-80 h-16 flex justify-center items-center rounded-2xl text-lg font-light text-center bg-primarybis/60 hover:primarybisary/80 text-secondary self-end mt-10"
-        >
-          {{ locale === 'fr' ? 'Contactez-nous' : 'Contact us' }}
-        </a>
-      </div>
+      <a
+        href="/Contact"
+        class="w-60 lg:w-80 h-16 flex justify-center items-center rounded-2xl text-lg font-light text-center bg-primarybis/60 hover:primarybisary/80 text-secondary self-end mt-10"
+      >
+        {{ locale === 'fr' ? 'Contactez-nous' : 'Contact us' }}
+      </a>
     </div>
     <div class="bg-secondary z-10">
       <div class="lg:h-[calc(100vw/2.5)] flex flex-col lg:flex-row items-center relative overflow-hidden justify-between">
