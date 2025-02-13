@@ -22,25 +22,12 @@ COPY . .
 # Build Nuxt3 app
 RUN npx nuxi build
 
-# List the contents of .output to verify build success
-RUN ls -la .output
-RUN ls -la .output/server
-
-# Stage 2: Production
-FROM node:18-slim AS production
-
-WORKDIR /app
-
 # Copy the node_modules from the base image (this is already installed and cached)
 COPY --from=builder /app/node_modules ./node_modules
 
 # Copy the built application from the base image
 COPY --from=builder /app/.nuxt ./.nuxt
 COPY --from=builder /app/.output ./.output
-
-# Install only production dependencies if needed
-COPY package*.json ./
-RUN npm install --omit=dev
 
 # Expose the frontend service port
 EXPOSE 3000
