@@ -68,9 +68,8 @@ onMounted(async () => {
       // If it's a relative URL, prepend the base URL with 'uploads/'
       return `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${portfolio.value.filepath}/${imageUrl}`;
     });
-    console.log(images);
+    // console.log(images);
     // images.value = data.images.map(image => `https://imagery.tor1.cdn.digitaloceanspaces.com/${image}`);
-    // images.value = data.images.map(image => `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${image}`);
   } catch (error) {
     console.error('Error fetching portfolios:', error)
   }
