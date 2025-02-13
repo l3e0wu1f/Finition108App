@@ -1,12 +1,12 @@
 <!-- eslint-disable no-irregular-whitespace -->
 <template>
   <div>
-    <div class="h-[300px] xs:h-[calc(100vh-5rem)] w-screen overflow-hidden z-0 relative">
+    <div class="h-[500px] sm:h-[calc(100vh-5rem)] w-screen overflow-hidden z-0 relative">
       <div
         class="xs:bg-fixed bg-contain object-contain xs:bg-cover xs:object-cover xs:bg-center h-full w-full absolute"
         style="background-image: url('https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/backdrop.jpg'); background-repeat: no-repeat;">
         <!-- Mobile -->
-        <div class="xs:hidden flex flex-col justify-center p-4 z-5 mt-[15rem]">
+        <div class="xs:hidden flex flex-col justify-center p-4 z-5 mt-[18rem]">
           <h1 class="text-lg text-black font-medium text-center p-1">
             {{ locale === 'fr' ? "Finition 108 : Maîtriser l'art de la construction depuis plus de 20 ans." : 'Finition 108: Mastering the art of construction for over 20 years.' }}
           </h1>
