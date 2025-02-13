@@ -25,8 +25,11 @@ module.exports = {
             aspectRatio: {
                 auto: 'auto',
                 square: '1 / 1',
-                video: '16 / 9'
-            }
+                video: '16 / 9',
+            },
+            screens: {
+              'xs': '450px', // min-width
+            },
         },
     },
     plugins: [],
