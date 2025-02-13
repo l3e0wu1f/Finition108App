@@ -1,5 +1,5 @@
 # Stage 1: Build
-FROM node:18 AS builder
+FROM node:18
 
 WORKDIR /app
 
@@ -23,11 +23,11 @@ COPY . .
 RUN npx nuxi build
 
 # Copy the node_modules from the base image (this is already installed and cached)
-COPY --from=builder /app/node_modules ./node_modules
+COPY /app/node_modules ./node_modules
 
 # Copy the built application from the base image
-COPY --from=builder /app/.nuxt ./.nuxt
-COPY --from=builder /app/.output ./.output
+COPY /app/.nuxt ./.nuxt
+COPY /app/.output ./.output
 
 # Expose the frontend service port
 EXPOSE 3000
