@@ -1,8 +1,8 @@
 <template>
   <div class="min-h-[calc(100vh-13rem)]">
     <div
-      class="bg-fixed bg-center bg-cover h-full pt-10 md:pt-28 relative pb-10 md:pb-16"
-      style="background-image: url('https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/side_scaffolding.jpg');"
+      class="bg-fixed bg-center bg-contain object-contain sm:bg-cover sm:object-cover pt-10 md:pt-28 relative pb-10 md:pb-16"
+      style="background-image: url('https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/side_scaffolding.jpg'); background-repeat: no-repeat;"
     >
       <div class="z-10">
         <h1 
