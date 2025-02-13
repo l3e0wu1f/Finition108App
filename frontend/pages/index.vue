@@ -1,7 +1,7 @@
 <!-- eslint-disable no-irregular-whitespace -->
 <template>
   <div>
-    <div class="h-[calc(100vh-35rem)] md:h-[calc(100vh-5rem)] w-screen overflow-hidden z-0 relative">
+    <div class="h-[calc(100vh-30rem)] md:h-[calc(100vh-5rem)] w-screen overflow-hidden z-0 relative">
       <div
         class="bg-fixed bg-contain md:bg-cover md:bg-center h-full w-full absolute"
         style="background-image: url('https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/backdrop.jpg'); background-repeat: no-repeat;"
