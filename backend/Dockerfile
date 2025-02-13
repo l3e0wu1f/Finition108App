@@ -8,7 +8,7 @@ ENV NODE_ENV=production
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install --only=production
+RUN npm install --omit=dev
 RUN npm install multer-s3
 
 # Install nodemon globally
