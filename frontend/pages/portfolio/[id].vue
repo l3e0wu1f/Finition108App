@@ -52,14 +52,21 @@ onMounted(async () => {
     const data = await response.json()
     portfolio.value = data.portfolio
     // images.value = data.images  // Use the image URLs directly
+    // Process the image URLs
     images.value = data.images.map(imageUrl => {
-      // Remove the part of the URL before 'uploads/' if it exists
-      const imagePath = imageUrl.includes('uploads/') 
-        ? imageUrl.split('uploads/')[1] // Get the path after 'uploads/'
-        : imageUrl;
+      // Check if the imageUrl already contains 'uploads/'
+      const isFullUrl = imageUrl.startsWith('http');
 
-      // Create the correct image URL
-      return `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${portfolio.value.filepath}/${imagePath}`;
+      if (isFullUrl) {
+        // If it's a full URL and doesn't have 'uploads/' part, prepend it
+        if (!imageUrl.includes('uploads/')) {
+          return `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${imageUrl.split('https://imagery.tor1.cdn.digitaloceanspaces.com/')[1]}`;
+        }
+        return imageUrl; // If already has 'uploads/', just return as is
+      }
+
+      // If it's a relative URL, prepend the base URL with 'uploads/'
+      return `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${portfolio.value.filepath}/${imageUrl}`;
     });
     console.log(images);
     // images.value = data.images.map(image => `https://imagery.tor1.cdn.digitaloceanspaces.com/${image}`);
