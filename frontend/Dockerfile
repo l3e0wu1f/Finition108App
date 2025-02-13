@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y \
 
 # Copy the rest of the source code
 RUN npm install
-RUN npm install @heroicons/vue
+RUN npm install @iconify/vue
 
 COPY . .
 
