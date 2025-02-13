@@ -62,7 +62,7 @@
       </div>
     </div>
     <div class="flex gap-10 items-center text-sm">
-      <div class="flex flex-col gap-2 text-right">
+      <div class="flex flex-col gap-2 text-center">
         <a
           href="mailto:admin@finition108.io"
           class="underline hover:text-secondary/70"
