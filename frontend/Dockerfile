@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Clean npm cache and install necessary build tools
-RUN npm cache clean --force
+# RUN npm cache clean --force
 RUN apt-get update && apt-get install -y \
   build-essential \
   libvips-dev \
@@ -15,6 +15,8 @@ RUN apt-get update && apt-get install -y \
 
 # Copy the rest of the source code
 RUN npm install
+npm install @heroicons/vue
+
 COPY . .
 
 # Build Nuxt3 app
