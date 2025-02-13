@@ -1,7 +1,7 @@
 <template>
   <div class="w-screen min-h-screen">
     <div
-      class="bg-fixed bg-center bg-contain object-contain sm:bg-cover sm:object-cover h-full pt-10 md:pt-28 relative"
+      class="sm:bg-fixed bg-center bg-contain object-contain sm:bg-cover sm:object-cover h-full pt-10 md:pt-28 relative"
       style="background-image: url('https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/paint_brush.jpg'); background-repeat: no-repeat;"
     >
       <div class="z-10">
