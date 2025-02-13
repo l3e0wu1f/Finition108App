@@ -1,4 +1,17 @@
 import Vue from 'vue';
-import IconifyIcon from '@iconify/vue';
+import { Icon } from '@iconify/vue';
+import chevronLeft from '@iconify/icons-heroicons/arrow-left-20-solid';
+import chevronRight from '@iconify/icons-heroicons/arrow-right-20-solid';
 
-Vue.component('Icon', IconifyIcon);
+export default {
+  components: {
+    Icon
+  },
+  data() {
+    return {
+      chevronLeftIcon: chevronLeft,
+      chevronRightIcon: chevronRight
+    };
+  }
+};
+
