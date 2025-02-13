@@ -53,7 +53,7 @@ onMounted(async () => {
     portfolio.value = data.portfolio
     // images.value = data.images  // Use the image URLs directly
     console.log("Method 2 images: ");
-    images.value = data.images.map(image => `${image}`);
+    images.value = data.images.map(image => `uploads/${image}`);
     console.log(images);
     // images.value = data.images.map(image => `https://imagery.tor1.cdn.digitaloceanspaces.com/${image}`);
     // images.value = data.images.map(image => `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${image}`);
