@@ -31,11 +31,12 @@
             }}
           </p>
         </div>
-        <!-- <div class="w-px bg-primarybis/30"></div> -->
         <div class="w-full">
           <h2 class="text-2xl py-10 text-center">
             {{ locale == 'fr' ? 'Formulaire de contact' : 'Contact form' }}
           </h2>
+          <script type="text/javascript" src="https://form.jotform.com/jsform/250437073443251"></script>
+          <!--
           <form
             id="contactForm"
             ref="contactForm"
@@ -172,6 +173,7 @@
               }}
             </p>
           </form>
+          -->
         </div>
       </div>
     </div>
