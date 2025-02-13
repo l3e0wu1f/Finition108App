@@ -40,7 +40,7 @@ const getFilesFromS3Directory = async (dir) => {
   return data.Contents.map(obj => obj.Key);
 };
 
-const dir = 'uploads/'; // Define the directory you want to list
+const dir = 'uploads/${portfolio.filepath}/'; // Define the directory you want to list
 getFilesFromS3Directory(dir);
 
 
