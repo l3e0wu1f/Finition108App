@@ -52,8 +52,15 @@ onMounted(async () => {
     const data = await response.json()
     portfolio.value = data.portfolio
     // images.value = data.images  // Use the image URLs directly
-    console.log("Method 2 images: ");
-    images.value = data.images.map(image => `uploads/${image}`);
+    images.value = data.images.map(imageUrl => {
+      // Remove the part of the URL before 'uploads/' if it exists
+      const imagePath = imageUrl.includes('uploads/') 
+        ? imageUrl.split('uploads/')[1] // Get the path after 'uploads/'
+        : imageUrl;
+
+      // Create the correct image URL
+      return `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${portfolio.value.filepath}/${imagePath}`;
+    });
     console.log(images);
     // images.value = data.images.map(image => `https://imagery.tor1.cdn.digitaloceanspaces.com/${image}`);
     // images.value = data.images.map(image => `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${image}`);
