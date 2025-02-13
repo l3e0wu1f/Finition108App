@@ -1,20 +1,20 @@
 <!-- eslint-disable no-irregular-whitespace -->
 <template>
   <div>
-    <div class="h-[calc(100vh-43rem)] md:h-[calc(100vh-5rem)] w-screen overflow-hidden z-0 relative">
+    <div class="h-[300px] sm:h-[calc(100vh-5rem)] w-screen overflow-hidden z-0 relative">
       <div
-        class="md:bg-fixed bg-contain md:bg-cover md:bg-center h-full w-full absolute"
+        class="bg-fixed bg-contain object-contain sm:bg-cover sm:object-cover sm:bg-center h-full w-full absolute"
         style="background-image: url('https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/backdrop.jpg'); background-repeat: no-repeat;"
       />
       <div class="flex flex-col justify-center p-4 lg:p-14 z-5 absolute lg:h-[25rem] md:bottom-0 right-0">
         <h1
-          class="text-2xl md:text-3xl lg:text-5xl text-secondary font-medium text-right p-1"
+          class="text-lg sm:text-2xl md:text-3xl lg:text-5xl text-secondary font-medium text-right p-1"
           style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);"
         >
           {{ locale === 'fr' ? "Finition 108 : Maîtriser l'art de la construction" :'Finition 108: Mastering the art of' }}
         </h1>
         <h1
-          class="text-2xl md:text-3xl lg:text-5xl text-secondary font-medium text-right p-1"
+          class="text-lg sm:text-2xl md:text-3xl lg:text-5xl text-secondary font-medium text-right p-1"
           style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);"
         >
           {{ locale === 'fr' ? "depuis plus de 20 ans." :'construction for over 20 years.' }}
@@ -31,7 +31,7 @@
     <div class="bg-secondary z-10">
       <div class="lg:h-[calc(100vw/2.5)] flex flex-col lg:flex-row items-center relative overflow-hidden justify-between">
         <NuxtImg
-          src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/home_woman.jpg"
+          src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/about-us_home.jpg"
           class="h-screen max-w-none lg:w-screen absolute opacity-20"
           fit="outside"
           loading="lazy"
@@ -39,7 +39,7 @@
 
         <div class="lg:h-[calc((100vw/2.5)-8rem)] w-1/2 overflow-hidden hidden lg:block z-10">
           <NuxtImg
-            src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/home_woman.jpg"
+            src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/about-us_home.jpg"
             class="lg:h-[calc((100vw/2.5)-8rem)] max-w-none hidden lg:block ml-16"
             fit="outside"
             loading="lazy"
@@ -47,7 +47,7 @@
         </div>
         <div class="w-full p-10 overflow-hidden z-10 lg:hidden block">
           <NuxtImg
-            src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/home_woman.jpg"
+            src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/about-us_home.jpg"
             class="lg:hidden block"
             fit="outside"
             loading="lazy"
@@ -71,14 +71,14 @@
       </div>
       <div class="lg:h-[calc(100vw/2.5)] flex flex-col lg:flex-row items-center relative overflow-hidden justify-between">
         <NuxtImg
-          src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/inside_other_house.jpg"
+          src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/services_home.jpg"
           class="h-screen max-w-none lg:w-screen absolute  opacity-20"
           fit="outside"
           loading="lazy"
         />
         <div class="w-full p-10 overflow-hidden z-10 lg:hidden block">
           <NuxtImg
-            src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/inside_other_house.jpg"
+            src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/services_home.jpg"
             class="lg:hidden block"
             fit="outside"
             loading="lazy"
@@ -102,7 +102,7 @@
 
         <div class="lg:h-[calc((100vw/2.5)-8rem)] w-1/2 overflow-hidden hidden lg:block z-10 mr-16">
           <NuxtImg
-            src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/inside_other_house.jpg"
+            src="https://imagery.tor1.cdn.digitaloceanspaces.com/frontend/services_home.jpg"
             class="h-[calc((100vw/2.5)-8rem)] max-w-none"
             fit="outside"
             loading="lazy"
