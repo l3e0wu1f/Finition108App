@@ -29,12 +29,12 @@
         :ui="{ item: 'basis-full' }" 
         :prev-button="{
           color: 'gray',
-          icon: 'chevronLeftIcon',
+          icon: 'i-heroicons-arrow-left-20-solid',
           class: '-start-12'
         }"
         :next-button="{
           color: 'gray',
-          icon: 'chevronRightIcon',
+          icon: 'i-heroicons-arrow-right-20-solid',
           class: '-end-12'
         }"
         class="overflow-hidden md:h-[calc(100vh*0.7)] md:w-[calc(100vw*0.7)]" 
