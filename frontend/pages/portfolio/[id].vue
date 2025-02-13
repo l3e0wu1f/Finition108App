@@ -51,9 +51,7 @@ onMounted(async () => {
     const response = await fetch(`/api/portfolio/${id}`) // Adjust the endpoint as needed
     const data = await response.json()
     portfolio.value = data.portfolio
-    images.value = data.images  // Use the image URLs directly
-    console.log("Method 1 images: ");
-    console.log(images);
+    // images.value = data.images  // Use the image URLs directly
     console.log("Method 2 images: ");
     images.value = data.images.map(image => `https://imagery.tor1.cdn.digitaloceanspaces.com/uploads/${image}`);
     console.log(images);
