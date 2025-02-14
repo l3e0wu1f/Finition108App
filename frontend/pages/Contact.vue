@@ -44,13 +44,19 @@
             allow="geolocation; microphone; camera; fullscreen"
             src="https://form.jotform.com/250437073443251"
             frameborder="0"
-            style="min-width:100%;max-width:100%;height:539px;border:none;"
-            scrolling="no"
+            style="min-width:100%;max-width:100%;height:600px;border:none;"
+            scrolling="yes"
           >
           </iframe>
           <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
           <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-250437073443251']", "https://form.jotform.com/")</script>
-    
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Hide the element with the ID 'myElement'
+                document.getElementsByClassName('formFooter')[0].style.display = 'none!important';
+                document.getElementsByClassName('formFooter-heightMask')[0].style.height = '0!important';
+            });
+          </script>
           <!--
           <form
             id="contactForm"
