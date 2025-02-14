@@ -47,32 +47,7 @@
             style="min-width:100%;max-width:100%;height:600px;border:none;"
             scrolling="yes"
           ></iframe>
-      
-          <script>
-          export default {
-            methods: {
-              iframeLoaded() {
-                // Wait for the iframe content to fully load and then apply styles
-                const iframe = document.getElementById("JotFormIFrame-250437073443251");
-                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
           
-                if (iframeDoc) {
-                  // Hide the form footer by applying styles with !important
-                  const formFooter = iframeDoc.getElementsByClassName("formFooter")[0];
-                  if (formFooter) {
-                    formFooter.style.setProperty("display", "none", "important");
-                  }
-          
-                  // Set height of formFooter-heightMask to 0 with !important
-                  const formFooterHeightMask = iframeDoc.getElementsByClassName("formFooter-heightMask")[0];
-                  if (formFooterHeightMask) {
-                    formFooterHeightMask.style.setProperty("height", "0", "important");
-                  }
-                }
-              }
-            }
-          };
-          </script>
           <!--
           <form
             id="contactForm"
@@ -218,10 +193,31 @@
 </template>
 
 <script setup>
+  
 import { onMounted, ref } from 'vue'
 import { useHead } from '#imports'
 
 const { locale } = useI18n()
+
+function iframeLoaded() {
+  // Wait for the iframe content to fully load and then apply styles
+  const iframe = document.getElementById("JotFormIFrame-250437073443251");
+  const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+  if (iframeDoc) {
+    // Hide the form footer by applying styles with !important
+    const formFooter = iframeDoc.getElementsByClassName("formFooter")[0];
+    if (formFooter) {
+      formFooter.style.setProperty("display", "none", "important");
+    }
+
+    // Set height of formFooter-heightMask to 0 with !important
+    const formFooterHeightMask = iframeDoc.getElementsByClassName("formFooter-heightMask")[0];
+    if (formFooterHeightMask) {
+      formFooterHeightMask.style.setProperty("height", "0", "important");
+    }
+  }
+}
 
 const dropContainer = ref(null)
 const fileInput = ref(null)
