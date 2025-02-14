@@ -219,83 +219,83 @@ function iframeLoaded() {
   }
 }
 
-const dropContainer = ref(null)
-const fileInput = ref(null)
+// const dropContainer = ref(null)
+// const fileInput = ref(null)
 
-const contactForm = ref(null) // Reference to the form
-const messageSent = ref(false)
+// const contactForm = ref(null) // Reference to the form
+// const messageSent = ref(false)
 
-async function sendData() {
-    // Associate the FormData object with the form element
-    const formData = new FormData(contactForm.value)
-    console.log(contactForm.value)
-    try {
-        const response = await fetch('http://localhost:3001/api/contact-form', {
-            method: 'POST',
-            // Set the FormData instance as the request body
-            body: formData,
-        })
-        if (response.status === 201) {
-            contactForm.value.reset()
-            messageSent.value  = true
-        }
-    }
-    catch (e) {
-        console.error(e)
-    }
-}
+// async function sendData() {
+//     // Associate the FormData object with the form element
+//     const formData = new FormData(contactForm.value)
+//     console.log(contactForm.value)
+//     try {
+//         const response = await fetch('http://localhost:3001/api/contact-form', {
+//             method: 'POST',
+//             // Set the FormData instance as the request body
+//             body: formData,
+//         })
+//         if (response.status === 201) {
+//             contactForm.value.reset()
+//             messageSent.value  = true
+//         }
+//     }
+//     catch (e) {
+//         console.error(e)
+//     }
+// }
 
-function handleSubmit(event) {
-    console.log('submit')
-    event.preventDefault()
-    sendData()
-}
+// function handleSubmit(event) {
+//     console.log('submit')
+//     event.preventDefault()
+//     sendData()
+// }
 
-onMounted(() => {
-    dropContainer.value.addEventListener('dragover', (e) => {
-        e.preventDefault()
-    })
+// onMounted(() => {
+//     dropContainer.value.addEventListener('dragover', (e) => {
+//         e.preventDefault()
+//     })
 
-    dropContainer.value.addEventListener('dragenter', () => {
-        console.log('dragenter')
-        dropContainer.value.classList.add('drag-active')
-    })
+//     dropContainer.value.addEventListener('dragenter', () => {
+//         console.log('dragenter')
+//         dropContainer.value.classList.add('drag-active')
+//     })
 
-    dropContainer.value.addEventListener('dragleave', () => {
-        dropContainer.value.classList.remove('drag-active')
-    })
+//     dropContainer.value.addEventListener('dragleave', () => {
+//         dropContainer.value.classList.remove('drag-active')
+//     })
 
-    dropContainer.value.addEventListener('drop', (e) => {
-        console.log('drop')
-        e.preventDefault()
-        dropContainer.value.classList.remove('drag-active')
-        // Get the files that are currently in the input field
-        const existingFiles = fileInput.value.files
+//     dropContainer.value.addEventListener('drop', (e) => {
+//         console.log('drop')
+//         e.preventDefault()
+//         dropContainer.value.classList.remove('drag-active')
+//         // Get the files that are currently in the input field
+//         const existingFiles = fileInput.value.files
 
-        // Convert the FileList to an array to append the new files
-        const existingFilesArray = Array.from(existingFiles)
+//         // Convert the FileList to an array to append the new files
+//         const existingFilesArray = Array.from(existingFiles)
 
-        // Get the dropped files from the drag event
-        const droppedFiles = e.dataTransfer.files
+//         // Get the dropped files from the drag event
+//         const droppedFiles = e.dataTransfer.files
 
-        // Convert the dropped FileList to an array
-        const droppedFilesArray = Array.from(droppedFiles)
+//         // Convert the dropped FileList to an array
+//         const droppedFilesArray = Array.from(droppedFiles)
 
-        // Combine the existing files and dropped files
-        const allFiles = [...existingFilesArray, ...droppedFilesArray]
+//         // Combine the existing files and dropped files
+//         const allFiles = [...existingFilesArray, ...droppedFilesArray]
 
-        // Create a new FileList (we cannot directly set a FileList, but we can create a new one using DataTransfer)
-        const dataTransfer = new DataTransfer()
+//         // Create a new FileList (we cannot directly set a FileList, but we can create a new one using DataTransfer)
+//         const dataTransfer = new DataTransfer()
 
-        // Add all files to the DataTransfer
-        allFiles.forEach((file) => {
-            dataTransfer.items.add(file)
-        })
+//         // Add all files to the DataTransfer
+//         allFiles.forEach((file) => {
+//             dataTransfer.items.add(file)
+//         })
 
-        // Update the input's files with the new FileList
-        fileInput.value.files = dataTransfer.files
-    })
-})
+//         // Update the input's files with the new FileList
+//         fileInput.value.files = dataTransfer.files
+//     })
+// })
 
 const pageTitle = 'Contactez-Nous'
 const pageDescription = "Prêt à commencer votre rénovation ? Contactez Finition108 dès aujourd'hui pour planifier une consultation ou pour nous poser vos questions sur nos services et notre processus. Nous sommes ici pour vous aider à réaliser vos objectifs de rénovation."
