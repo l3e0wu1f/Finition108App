@@ -51,11 +51,25 @@
           <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
           <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-250437073443251']", "https://form.jotform.com/")</script>
           <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Hide the element with the ID 'myElement'
-                document.getElementsByClassName('formFooter')[0].style.display = 'none!important';
-                document.getElementsByClassName('formFooter-heightMask')[0].style.height = '0!important';
-            });
+            function iframeLoaded() {
+              // Wait for the iframe content to fully load and then apply styles
+              const iframe = document.getElementById('JotFormIFrame-250437073443251');
+              const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+          
+              if (iframeDoc) {
+                // Hide the form footer by applying styles with !important
+                const formFooter = iframeDoc.getElementsByClassName('formFooter')[0];
+                if (formFooter) {
+                  formFooter.style.setProperty('display', 'none', 'important');
+                }
+          
+                // Set height of formFooter-heightMask to 0 with !important
+                const formFooterHeightMask = iframeDoc.getElementsByClassName('formFooter-heightMask')[0];
+                if (formFooterHeightMask) {
+                  formFooterHeightMask.style.setProperty('height', '0', 'important');
+                }
+              }
+            }
           </script>
           <!--
           <form
