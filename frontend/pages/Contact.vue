@@ -35,7 +35,22 @@
           <h2 class="text-2xl py-10 text-center">
             {{ locale == 'fr' ? 'Formulaire de contact' : 'Contact form' }}
           </h2>
-          <script type="text/javascript" src="https://form.jotform.com/jsform/250437073443251"></script>
+          
+          <iframe
+            id="JotFormIFrame-250437073443251"
+            title="Finition108 Job Inquiry Form"
+            onload="window.parent.scrollTo(0,0)"
+            allowtransparency="true"
+            allow="geolocation; microphone; camera; fullscreen"
+            src="https://form.jotform.com/250437073443251"
+            frameborder="0"
+            style="min-width:100%;max-width:100%;height:539px;border:none;"
+            scrolling="no"
+          >
+          </iframe>
+          <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
+          <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-250437073443251']", "https://form.jotform.com/")</script>
+    
           <!--
           <form
             id="contactForm"
