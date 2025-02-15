@@ -13,7 +13,7 @@ const AWS = require('aws-sdk');
 app.use(cors({
   origin: 'https://finition108.io',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin'],
   credentials: true // Allow cookies to be sent with requests
 }));
 
