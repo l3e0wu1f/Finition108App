@@ -33,9 +33,16 @@ const getFilesFromS3Directory = async (dir) => {
   try {
     const data = await s3.listObjectsV2(params).promise();
     console.log("S3 files:", data);  // Log to check if files are being fetched
-    return data.Contents
-      .filter(obj => obj.Size > 0)  // Filter out directory entries
-      .map(obj => obj.Key.replace(`uploads/`, ''));
+    return data.Contents.map(obj => {
+      if (obj.Key.endsWith('/')) {
+        // Handle directory entry
+        console.log(`Skipping directory entry: ${obj.Key}`);
+        return null;
+      } else {
+        // Handle file entry
+        return obj.Key.replace(`uploads/`, '');
+      }
+    }).filter(key => key !== null);  // Filter out null entries
   } catch (error) {
     console.error(`Error listing objects in S3 directory: ${dir}`, error);
     return [];
