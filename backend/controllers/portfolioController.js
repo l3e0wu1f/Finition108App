@@ -56,11 +56,11 @@ exports.getAllPortfolios = async (req, res) => {
     const portfoliosWithImages = await Promise.all(portfolios.map(async (portfolio) => {
     const primaryImgs = await getFilesFromS3Directory(`uploads/${portfolio.filepath}/cover/primary/`);
     const hoverImgs = await getFilesFromS3Directory(`uploads/${portfolio.filepath}/cover/hover/`);
-    // const primaryUrl = primaryImgs.length > 0 ? `${uploadsPath}/${primaryImgs[0]}` : null;
-    // const hoverUrl = hoverImgs.length > 0 ? `${uploadsPath}/${hoverImgs[0]}` : null;
-    console.log(primaryImgs);
-    const primaryUrl = primaryImgs.length > 0 ? `${uploadsPath}/${portfolio.filepath}/${primaryImgs[0]}` : null;
-    const hoverUrl = hoverImgs.length > 0 ? `${uploadsPath}/${portfolio.filepath}/${hoverImgs[0]}` : null;
+    const primaryUrl = primaryImgs.length > 0 ? `${uploadsPath}/${primaryImgs[0]}` : null;
+    const hoverUrl = hoverImgs.length > 0 ? `${uploadsPath}/${hoverImgs[0]}` : null;
+    // console.log(primaryImgs);
+    // const primaryUrl = primaryImgs.length > 0 ? `${uploadsPath}/${portfolio.filepath}/${primaryImgs[0]}` : null;
+    // const hoverUrl = hoverImgs.length > 0 ? `${uploadsPath}/${portfolio.filepath}/${hoverImgs[0]}` : null;
     
 
     return { 
