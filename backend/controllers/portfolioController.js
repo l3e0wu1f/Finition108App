@@ -58,8 +58,8 @@ exports.getAllPortfolios = async (req, res) => {
     const hoverImgs = await getFilesFromS3Directory(`uploads/${portfolio.filepath}/cover/hover/`);
     // const primaryUrl = primaryImgs.length > 0 ? `${uploadsPath}/${primaryImgs[0]}` : null;
     // const hoverUrl = hoverImgs.length > 0 ? `${uploadsPath}/${hoverImgs[0]}` : null;
-    const primaryUrl = primaryImgs.length > 0 ? `${uploadsPath}/${portfolio.filepath}/cover/primary/${primaryImgs[0]}` : null;
-    const hoverUrl = hoverImgs.length > 0 ? `${uploadsPath}/${portfolio.filepath}/cover/hover/${hoverImgs[0]}` : null;
+    const primaryUrl = primaryImgs.length > 0 ? `${uploadsPath}/${portfolio.filepath}/${primaryImgs[0]}` : null;
+    const hoverUrl = hoverImgs.length > 0 ? `${uploadsPath}/${portfolio.filepath}/${hoverImgs[0]}` : null;
     
 
     return { 
