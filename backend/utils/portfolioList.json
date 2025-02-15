@@ -7,19 +7,19 @@
         "credit_architect":"Atelier Schliess & Carter"
     },
     {
-        "name": "Strathyre",
-        "filepath": "strathyre",
-        "city": "Montréal, QC, Canada",
-        "date": "",
-        "credit":"Accordéon"
-    },
-    {
         "name": "Henri-Julien",
         "filepath": "henrijulien",
         "city": "Montréal, QC, Canada",
         "date": "",
         "credit":"Catlin Stothers design"
     },
+    {
+        "name": "Strathyre",
+        "filepath": "strathyre",
+        "city": "Montréal, QC, Canada",
+        "date": "",
+        "credit":"Accordéon"
+    },    
     {
         "name": "Wolseley",
         "filepath": "wolseley",
