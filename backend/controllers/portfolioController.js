@@ -23,22 +23,41 @@ const portfolioFilePath = path.join(__dirname, '../utils/portfolioList.json');
 const uploadsPath = 'https://imagery.tor1.cdn.digitaloceanspaces.com/uploads';
 // const uploadsPath = path.join(LOCAL_PATH, 'public/uploads');
 
+
 const getFilesFromS3Directory = async (dir) => {
   const params = {
     Bucket: 'imagery',
-    Prefix: `${dir}`, // Prefix to list objects within the directory
+    Prefix: dir,
   };
 
   try {
     const data = await s3.listObjectsV2(params).promise();
     console.log("S3 files:", data);  // Log to check if files are being fetched
-    return data.Contents.map(obj => obj.Key.replace(`uploads/`, ''));
+    return data.Contents
+      .filter(obj => obj.Size > 0)  // Filter out directory entries
+      .map(obj => obj.Key.replace(`${dir}`, ''));
   } catch (error) {
-    console.error(`Error listing objects in S3 directory: uploads/`, error);
+    console.error(`Error listing objects in S3 directory: ${dir}`, error);
     return [];
   }
-  return data.Contents.map(obj => obj.Key);
 };
+
+// const getFilesFromS3Directory = async (dir) => {
+//   const params = {
+//     Bucket: 'imagery',
+//     Prefix: `${dir}`, // Prefix to list objects within the directory
+//   };
+
+//   try {
+//     const data = await s3.listObjectsV2(params).promise();
+//     console.log("S3 files:", data);  // Log to check if files are being fetched
+//     return data.Contents.map(obj => obj.Key.replace(`uploads/`, ''));
+//   } catch (error) {
+//     console.error(`Error listing objects in S3 directory: uploads/`, error);
+//     return [];
+//   }
+//   return data.Contents.map(obj => obj.Key);
+// };
 
 const dir = 'uploads/${portfolio.filepath}/'; // Define the directory you want to list
 getFilesFromS3Directory(dir);
