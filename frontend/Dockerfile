@@ -6,6 +6,9 @@ WORKDIR /app
 # Copy package files and install dependencies
 COPY package*.json ./
 
+# Add dependency
+RUN npm add -D unenv
+
 # Clean npm cache and install necessary build tools
 # RUN npm cache clean --force
 RUN apt-get update && apt-get install -y \
@@ -18,9 +21,6 @@ RUN apt-get update && apt-get install -y \
 RUN npm install
 
 COPY . .
-
-# Add dependency
-RUN npm add -D unenv
 
 # Build Nuxt3 app
 RUN npx nuxi build
