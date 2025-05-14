@@ -18,7 +18,7 @@
     "@nuxt/ui": "^2.19.2",
     "@nuxtjs/i18n": "^9.0.0-rc.2",
     "@nuxtjs/seo": "^2.0.2",
-    "nuxt": "^3.13.0",
+    "nuxt": "^3.15.4",
     "rollup": "2.x",
     "sharp": "^0.33.5",
     "vue": "latest",
