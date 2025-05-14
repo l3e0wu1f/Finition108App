@@ -19,6 +19,9 @@ RUN npm install
 
 COPY . .
 
+# Add dependency
+RUN npm add -D unenv
+
 # Build Nuxt3 app
 RUN npx nuxi build
 
