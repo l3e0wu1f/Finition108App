@@ -6,9 +6,6 @@ WORKDIR /app
 # Copy package files and install dependencies
 COPY package*.json ./
 
-# Add dependency
-RUN npm add -D unenv
-
 # Clean npm cache and install necessary build tools
 # RUN npm cache clean --force
 RUN apt-get update && apt-get install -y \
@@ -19,6 +16,10 @@ RUN apt-get update && apt-get install -y \
 
 # Copy the rest of the source code
 RUN npm install
+RUN npm install nuxt@3.15.4
+
+# Add dependency
+RUN npm add -D unenv
 
 COPY . .
 
