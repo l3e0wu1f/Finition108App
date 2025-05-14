@@ -16,10 +16,6 @@ RUN apt-get update && apt-get install -y \
 
 # Copy the rest of the source code
 RUN npm install
-RUN npm install nuxt@3.15.4
-
-# Add dependency
-RUN npm add -D unenv
 
 COPY . .
 
