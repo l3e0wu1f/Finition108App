@@ -6,5 +6,8 @@ while [ ! -f /etc/letsencrypt/.certbot_done ]; do
   sleep 5
 done
 
+# Add Certbot renewal to crontab
+echo "0 0 * * * root certbot renew --dry-run && certbot renew" >> /etc/crontab
+
 # Start nginx after Certbot has completed
 nginx -g "daemon off;"
