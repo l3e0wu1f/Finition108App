@@ -13,7 +13,7 @@ services:
       - backend
     networks:
       - mynetwork
-    entrypoint: /bin/bash -c "while ! test -f /etc/letsencrypt/live/finition108.io-0001/fullchain.pem; do echo 'Waiting for Certbot to generate SSL certificates...'; sleep 5; done; nginx -g 'daemon off;'"
+    entrypoint: /bin/bash -c "while ! test -f /etc/letsencrypt/live/finition108.io/fullchain.pem; do echo 'Waiting for Certbot to generate SSL certificates...'; sleep 5; done; nginx -g 'daemon off;'"
 
 
   backend:
